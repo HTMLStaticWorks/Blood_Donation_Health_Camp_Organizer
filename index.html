@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeStream | Blood Donation & Health Camp Organizer</title>
+  <meta name="description"
+    content="Register for upcoming blood donation drives, check health camp schedules, view eligibility guidelines, and sign up as a volunteer or donor.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <!-- Tailwind CSS 3 CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#D2143A',
+            secondary: 'var(--secondary-navy)',
+            accent: '#E6A23C',
+            softIvory: 'var(--bg-ivory)',
+            cardWhite: 'var(--card-white)',
+            darkSlate: 'var(--text-slate)',
+            primaryHover: '#B10E2E',
+            secondaryHover: '#0F172A',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Manrope', 'sans-serif'],
+          },
+          fontSize: {
+            '2xs': '0.625rem',
+            '3xs': '0.5rem',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Synchronous theme loader (prevents flash-of-unstyled-content) -->
+  <script>
+    (function() {
+      var saved = localStorage.getItem("hospital-theme");
+      var isDark = saved === "dark" || (!saved && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      if (isDark) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    })();
+  </script>
+
+  <!-- Custom Styles CSS -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body
+  class="bg-softIvory dark:bg-[#0E1620] text-darkSlate dark:text-gray-200 min-h-screen flex flex-col transition-colors duration-300">
+
+  <!-- Sticky Header -->
+  <header id="main-header"
+    class="sticky top-0 z-40 bg-white/80 dark:bg-[#17222E]/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-3">
+        <div
+          class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white shadow-md shadow-primary/20">
+          <i data-lucide="droplet" class="w-5 h-5"></i>
+        </div>
+        <span
+          class="font-heading text-lg font-extrabold text-secondary dark:text-white leading-tight tracking-tight">LifeStream</span>
+      </a>
+
+      <!-- Desktop Nav Link Menu -->
+      <nav class="hidden xl:flex items-center gap-8">
+        <a href="index.html" class="nav-link text-sm font-medium hover:text-primary transition"
+          data-translate="navHome1">Home 1</a>
+        <a href="home2.html" class="nav-link text-sm font-medium hover:text-primary transition"
+          data-translate="navHome2">Home 2</a>
+        <a href="about.html" class="nav-link text-sm font-medium hover:text-primary transition"
+          data-translate="navAbout">About Us</a>
+        <a href="departments.html" class="nav-link text-sm font-medium hover:text-primary transition"
+          data-translate="navDepts">Camps</a>
+        <a href="doctors.html" class="nav-link text-sm font-medium hover:text-primary transition"
+          data-translate="navDocs">Specialists</a>
+        <a href="contact.html" class="nav-link text-sm font-medium hover:text-primary transition"
+          data-translate="navContact">Contact</a>
+      </nav>
+
+      <!-- CTA & Utility Options -->
+      <div class="hidden xl:flex items-center gap-4">
+
+        <!-- RTL Toggle -->
+        <button id="lang-toggle-btn"
+          class="p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition text-gray-500 dark:text-gray-400"
+          title="Toggle Language/RTL">
+          <i data-lucide="arrow-left-right" class="w-4 h-4 text-primary"></i>
+        </button>
+
+        <!-- Light/Dark Mode -->
+        <button id="theme-toggle-btn"
+          class="p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition text-gray-500 dark:text-gray-400">
+          <i id="theme-toggle-icon" data-lucide="moon" class="w-4 h-4"></i>
+        </button>
+
+        <!-- Main Sign Up Button -->
+        <a id="nav-signup-btn" href="signup.html"
+          class="py-2.5 px-5 bg-primary text-white text-sm font-bold rounded-lg hover:bg-primaryHover transition shadow-md shadow-primary/10"
+          data-translate="navSignup">
+          Sign Up
+        </a>
+      </div>
+
+      <!-- Mobile navigation menu button -->
+      <button id="mobile-menu-btn"
+        class="xl:hidden p-2 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+
+    </div>
+
+    <!-- Mobile Drawer dropdown -->
+    <div id="mobile-menu"
+      class="hidden xl:hidden bg-white dark:bg-[#17222E] border-b border-gray-100 dark:border-gray-800 transition-all duration-300">
+      <div class="px-4 pt-2 pb-6 space-y-3 flex flex-col">
+        <a href="index.html" class="nav-link text-base font-medium py-2">Home 1</a>
+        <a href="home2.html" class="nav-link text-base font-medium py-2">Home 2</a>
+        <a href="about.html" class="nav-link text-base font-medium py-2">About Us</a>
+        <a href="departments.html" class="nav-link text-base font-medium py-2">Camps</a>
+        <a href="doctors.html" class="nav-link text-base font-medium py-2">Specialists</a>
+        <a href="contact.html" class="nav-link text-base font-medium py-2">Contact</a>
+
+        <hr class="border-gray-100 dark:border-gray-800 my-2">
+
+        <div class="flex items-center justify-between gap-4 py-2">
+          <button onclick="window.toggleLanguage()"
+            class="flex-1 py-2 border border-gray-200 dark:border-gray-700 text-xs font-semibold rounded-lg flex items-center justify-center gap-1.5">
+            <i data-lucide="arrow-left-right" class="w-3.5 h-3.5 text-primary"></i>
+            <span>Language</span>
+          </button>
+          <button onclick="window.toggleTheme()"
+            class="flex-1 py-2 border border-gray-200 dark:border-gray-700 text-xs font-semibold rounded-lg flex items-center justify-center gap-1.5 text-gray-500 dark:text-gray-400">
+            <i data-lucide="moon" class="w-3.5 h-3.5"></i>
+            <span>Theme Toggle</span>
+          </button>
+        </div>
+
+        <a id="mobile-signup-btn" href="signup.html"
+          class="block text-center py-2.5 bg-primary text-white font-bold rounded-lg shadow-sm"
+          data-translate="navSignup">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <section
+    class="relative overflow-hidden bg-gradient-to-br from-white via-softIvory to-primary/5 dark:from-[#0E1620] dark:via-[#0E1620] dark:to-[#16324F]/20 py-20 lg:py-32">
+    <img src="images/hero_camp_banner.png"
+      alt="LifeStream Background"
+      class="absolute inset-0 w-full h-full object-cover opacity-20 dark:opacity-25 pointer-events-none">
+    <div
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <span
+          class="inline-block bg-primary/10 text-primary text-xs uppercase tracking-widest font-extrabold px-3 py-1 rounded-full mb-6">
+          Accredited Health Services
+        </span>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-none mb-6"
+          data-translate="heroTitle1">
+          Saving Lives.<br>Supporting Communities.
+        </h1>
+        <p class="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-lg leading-relaxed"
+          data-translate="heroSub1">
+          Register for upcoming blood donation drives, check health camp schedules, view eligibility guidelines, and sign up as a volunteer or donor.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="signup.html"
+            class="px-6 py-3 bg-primary text-white text-base font-bold rounded-xl hover:bg-primaryHover transition shadow-lg shadow-primary/20"
+            data-translate="btnBookNow">
+            Register as Volunteer/Donor
+          </a>
+          <a href="departments.html"
+            class="px-6 py-3 border border-secondary/20 dark:border-white/20 text-secondary dark:text-white text-base font-bold rounded-xl hover:bg-secondary/5 transition"
+            data-translate="btnFindDoc">
+            Explore Camps
+          </a>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="absolute inset-0 bg-primary rounded-3xl rotate-3 opacity-10"></div>
+        <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white dark:border-gray-800">
+          <img src="images/hero_camp_banner.png"
+            alt="LifeStream Camp Activity" class="w-full h-[400px] object-cover animate-fade-in">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Camp Enquiry Widget -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-12 relative z-20">
+    <div
+      class="bg-white dark:bg-cardWhite rounded-2xl border border-gray-100 dark:border-gray-800 p-6 md:p-8 premium-shadow">
+      <h3 class="text-lg font-bold text-secondary dark:text-white mb-4">Quick Health Camp Finder & Slot Booking</h3>
+      <form onsubmit="event.preventDefault(); window.location.href='contact.html';"
+        class="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
+        <div>
+          <label class="block text-2xs uppercase tracking-wider text-gray-400 font-bold mb-1">Camp Program</label>
+          <select
+            class="w-full border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-3 rounded-lg text-sm"
+            required>
+            <option>Blood Donation Camps</option>
+            <option>Cardiology & ECG Screening</option>
+            <option>Eye Screening & Spectacles</option>
+            <option>Pediatric & Child Wellness</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-2xs uppercase tracking-wider text-gray-400 font-bold mb-1">Preferred Date</label>
+          <input type="date"
+            class="w-full border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-3 rounded-lg text-sm"
+            required>
+        </div>
+        <div>
+          <label class="block text-2xs uppercase tracking-wider text-gray-400 font-bold mb-1">Timing Pref</label>
+          <select
+            class="w-full border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-3 rounded-lg text-sm"
+            required>
+            <option>Morning (08:00 AM - 12:00 PM)</option>
+            <option>Afternoon (12:00 PM - 04:00 PM)</option>
+            <option>Evening (04:00 PM - 08:00 PM)</option>
+          </select>
+        </div>
+        <button type="submit"
+          class="w-full bg-primary text-white py-3 px-4 font-bold rounded-lg text-sm hover:bg-primaryHover transition">
+          Book Camp Slot
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Medical Departments Section -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <h2 class="text-3xl font-extrabold tracking-tight mb-4" data-translate="secDeptsTitle">Camps</h2>
+      <p class="text-gray-500 text-sm">We provide safe, community-focused blood drives and diagnostic wellness campaigns managed by medical leads.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div
+        class="bg-white dark:bg-cardWhite rounded-xl border border-gray-100 dark:border-gray-800 overflow-hidden premium-shadow premium-shadow-hover transition duration-300 flex flex-col justify-between">
+        <div>
+          <div class="h-56 bg-gray-100 mb-6">
+            <img src="images/camp_blood_donation.png" alt="Blood Donation" class="w-full h-full object-cover">
+          </div>
+          <div class="px-6">
+            <h3 class="text-xl font-bold text-secondary dark:text-white mb-2">Blood Donation Drives</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Join our life-saving drives to donate whole blood, plasma, or platelets. Find schedules and local mobile donor units.</p>
+          </div>
+        </div>
+        <div class="px-6 pb-6">
+          <a href="doctors.html?dept=blood-donation" class="text-primary font-semibold text-sm hover:underline">View
+            Specialists &rarr;</a>
+        </div>
+      </div>
+      <div
+        class="bg-white dark:bg-cardWhite rounded-xl border border-gray-100 dark:border-gray-800 overflow-hidden premium-shadow premium-shadow-hover transition duration-300 flex flex-col justify-between">
+        <div>
+          <div class="h-56 bg-gray-100 mb-6">
+            <img src="images/camp_general_checkup.png" alt="Diagnostics" class="w-full h-full object-cover">
+          </div>
+          <div class="px-6">
+            <h3 class="text-xl font-bold text-secondary dark:text-white mb-2">General Health Camps</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Free diagnostic tests, general physician consultations, blood glucose checkups, and healthy lifestyle counselling.</p>
+          </div>
+        </div>
+        <div class="px-6 pb-6">
+          <a href="doctors.html?dept=general-checkup" class="text-primary font-semibold text-sm hover:underline">View Specialists
+            &rarr;</a>
+        </div>
+      </div>
+      <div
+        class="bg-white dark:bg-cardWhite rounded-xl border border-gray-100 dark:border-gray-800 overflow-hidden premium-shadow premium-shadow-hover transition duration-300 flex flex-col justify-between">
+        <div>
+          <div class="h-56 bg-gray-100 mb-6">
+            <img src="images/camp_eye_screening.png" alt="Eye Camps" class="w-full h-full object-cover">
+          </div>
+          <div class="px-6">
+            <h3 class="text-xl font-bold text-secondary dark:text-white mb-2">Eye Screening Camps</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Comprehensive vision checkups, cataract detection, preventive treatment consulting, and free spectacles distribution drives.</p>
+          </div>
+        </div>
+        <div class="px-6 pb-6">
+          <a href="doctors.html?dept=eye-camp" class="text-primary font-semibold text-sm hover:underline">View
+            Specialists &rarr;</a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-12">
+      <a href="departments.html"
+        class="inline-flex items-center gap-2 px-6 py-3 border border-primary text-primary font-bold rounded-xl hover:bg-primary/5 transition">
+        <span>Explore All Camps</span>
+        <i data-lucide="grid" class="w-4 h-4"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- Featured Doctors -->
+  <section class="bg-white dark:bg-[#111A24] py-20 lg:py-28 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="text-3xl font-extrabold tracking-tight mb-4" data-translate="secDocsTitle">Featured Specialists</h2>
+        <p class="text-gray-500 text-sm">Meet the experienced medical officers and coordinators leading our health camp initiatives.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div
+          class="bg-white dark:bg-cardWhite border border-gray-100 dark:border-gray-800 rounded-xl overflow-hidden premium-shadow">
+          <div class="h-64 bg-gray-100"><img
+              src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=600"
+              class="w-full h-full object-cover object-top"></div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-secondary dark:text-white">Dr. Marcus Sterling</h3>
+            <p class="text-xs text-primary font-medium">Blood Donation • MD, Blood Bank Lead</p>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mt-3">Lead Blood Bank Officer specializing in safe transfusion protocols, mobile blood collection, and donor health screening.</p>
+            <div class="mt-6 flex justify-between gap-3">
+              <button onclick="window.viewDoctorProfile('doc-1')"
+                class="flex-1 py-2 text-center border border-primary text-primary text-xs font-semibold rounded-lg hover:bg-primary/5 transition">View
+                Profile</button>
+              <button onclick="window.bookDoctorApt('doc-1')"
+                class="flex-1 py-2 text-center bg-primary text-white text-xs font-bold rounded-lg hover:bg-primaryHover transition">Register</button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="bg-white dark:bg-cardWhite border border-gray-100 dark:border-gray-800 rounded-xl overflow-hidden premium-shadow">
+          <div class="h-64 bg-gray-100"><img src="https://images.pexels.com/photos/5998467/pexels-photo-5998467.jpeg"
+              class="w-full h-full object-cover object-top"></div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-secondary dark:text-white">Dr. Elena Rostova</h3>
+            <p class="text-xs text-primary font-medium">Cardiology • MD, DM, FESC</p>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mt-3">Senior Cardiologist coordinating free community heart screenings, ECG analysis, and hypertension counseling.</p>
+            <div class="mt-6 flex justify-between gap-3">
+              <button onclick="window.viewDoctorProfile('doc-2')"
+                class="flex-1 py-2 text-center border border-primary text-primary text-xs font-semibold rounded-lg hover:bg-primary/5 transition">View
+                Profile</button>
+              <button onclick="window.bookDoctorApt('doc-2')"
+                class="flex-1 py-2 text-center bg-primary text-white text-xs font-bold rounded-lg hover:bg-primaryHover transition">Register</button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="bg-white dark:bg-cardWhite border border-gray-100 dark:border-gray-800 rounded-xl overflow-hidden premium-shadow">
+          <div class="h-64 bg-gray-100"><img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=600"
+              class="w-full h-full object-cover object-top"></div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-secondary dark:text-white">Dr. Sarah Jenkins</h3>
+            <p class="text-xs text-primary font-medium">Pediatric Wellness • MD, MPH</p>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mt-3">Dedicated pediatrician focusing on community child immunizations, nutrition guidelines, and growth checkup camps.</p>
+            <div class="mt-6 flex justify-between gap-3">
+              <button onclick="window.viewDoctorProfile('doc-3')"
+                class="flex-1 py-2 text-center border border-primary text-primary text-xs font-semibold rounded-lg hover:bg-primary/5 transition">View
+                Profile</button>
+              <button onclick="window.bookDoctorApt('doc-3')"
+                class="flex-1 py-2 text-center bg-primary text-white text-xs font-bold rounded-lg hover:bg-primaryHover transition">Register</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-12">
+        <a href="doctors.html" class="text-primary font-bold hover:underline text-sm inline-flex items-center gap-1">
+          <span>Browse All Camp Specialists</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <span class="text-primary text-xs font-bold uppercase tracking-wider block mb-2">Our Standards</span>
+        <h2 class="text-3xl font-extrabold tracking-tight mb-6" data-translate="whyUsTitle">Why Join Our Drives & Camps?</h2>
+        <div class="space-y-6">
+          <div class="flex gap-4">
+            <div class="w-10 h-10 shrink-0 bg-primary/10 text-primary rounded-lg flex items-center justify-center"><i
+                data-lucide="shield" class="w-5 h-5"></i></div>
+            <div>
+              <h4 class="font-bold text-secondary dark:text-white text-base">Certified Medical Coordinators</h4>
+              <p class="text-gray-600 dark:text-gray-400 text-xs mt-1">Every camp is led by board-certified clinical doctors and medical volunteers with proven track records.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-10 h-10 shrink-0 bg-primary/10 text-primary rounded-lg flex items-center justify-center"><i
+                data-lucide="file-text" class="w-5 h-5"></i></div>
+            <div>
+              <h4 class="font-bold text-secondary dark:text-white text-base">Free Health & Blood Reports</h4>
+              <p class="text-gray-600 dark:text-gray-400 text-xs mt-1">Access blood group certifications, donor health reports, and screening results securely online.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-10 h-10 shrink-0 bg-primary/10 text-primary rounded-lg flex items-center justify-center"><i
+                data-lucide="clock" class="w-5 h-5"></i></div>
+            <div>
+              <h4 class="font-bold text-secondary dark:text-white text-base">Safe & Sterile Donation Units</h4>
+              <p class="text-gray-600 dark:text-gray-400 text-xs mt-1">Every blood collection uses sterile, single-use kits under professional medical supervision.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="bg-gray-100 rounded-3xl overflow-hidden shadow-xl border border-gray-100 dark:border-gray-800 h-[380px]">
+        <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?q=80&w=800"
+          alt="Health screening" class="w-full h-full object-cover">
+      </div>
+    </div>
+  </section>
+
+  <!-- Patient Services Section (Eligibility Guidelines) -->
+  <section class="bg-white dark:bg-[#111A24] py-20 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="text-primary text-xs uppercase tracking-wider font-bold block mb-2">Eligibility Guidelines</span>
+      <h2 class="text-3xl font-extrabold text-secondary dark:text-white mb-12">Can You Donate Blood?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div
+          class="bg-softIvory dark:bg-cardWhite rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden premium-shadow premium-shadow-hover transition duration-300 flex flex-col justify-between text-center">
+          <div>
+            <div class="h-44 bg-gray-100 mb-6">
+              <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=600&auto=format&fit=crop" alt="Age & Weight" class="w-full h-full object-cover">
+            </div>
+            <div class="px-6 pb-6">
+              <h4 class="text-lg font-bold text-secondary dark:text-white mb-2">Age & Weight</h4>
+              <p class="text-gray-500 text-xs leading-relaxed">Donors must be between 18 and 65 years old and weigh at least 50 kg (110 lbs) to participate in blood donation drives safely.</p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="bg-softIvory dark:bg-cardWhite rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden premium-shadow premium-shadow-hover transition duration-300 flex flex-col justify-between text-center">
+          <div>
+            <div class="h-44 bg-gray-100 mb-6">
+              <img src="https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?q=80&w=600&auto=format&fit=crop" alt="General Health" class="w-full h-full object-cover">
+            </div>
+            <div class="px-6 pb-6">
+              <h4 class="text-lg font-bold text-secondary dark:text-white mb-2">General Health</h4>
+              <p class="text-gray-500 text-xs leading-relaxed">Must be in good general health with normal temperature, blood pressure, and pulse rate, and free from active infections or antibiotic courses.</p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="bg-softIvory dark:bg-cardWhite rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden premium-shadow premium-shadow-hover transition duration-300 flex flex-col justify-between text-center">
+          <div>
+            <div class="h-44 bg-gray-100 mb-6">
+              <img src="https://images.unsplash.com/photo-1615461066870-40b124f293db?q=80&w=600&auto=format&fit=crop" alt="Donation Frequency" class="w-full h-full object-cover">
+            </div>
+            <div class="px-6 pb-6">
+              <h4 class="text-lg font-bold text-secondary dark:text-white mb-2">Donation Frequency</h4>
+              <p class="text-gray-500 text-xs leading-relaxed">Whole blood can be donated every 56 days (8 weeks). Platelet donors can donate every 7 days (up to 24 times per year).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Patient Testimonials (Donor Stories) -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span class="text-primary text-xs uppercase font-bold tracking-wider">Donor Stories</span>
+      <h2 class="text-3xl font-extrabold tracking-tight mt-2 text-secondary dark:text-white">What Our Volunteers Say</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="bg-white dark:bg-cardWhite border border-gray-100 dark:border-gray-800 p-6 rounded-xl premium-shadow text-center flex flex-col justify-between h-full">
+        <div>
+          <div class="flex gap-1 text-amber-500 mb-4 font-bold justify-center">
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          </div>
+          <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6 text-center">"Donating blood with LifeStream was incredibly comfortable. The coordinators were professional, and I received my digital donor report the next day."</p>
+        </div>
+        <div class="flex items-center justify-center gap-3 text-left mt-auto">
+          <div class="w-10 h-10 rounded-full bg-gray-200 overflow-hidden shrink-0"><img
+              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=100"
+              class="w-full h-full object-cover"></div>
+          <div>
+            <strong class="text-xs text-secondary dark:text-white font-bold block">Clarissa Vance</strong>
+            <span class="text-3xs text-gray-400 block">Whole Blood Donor</span>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white dark:bg-cardWhite border border-gray-100 dark:border-gray-800 p-6 rounded-xl premium-shadow text-center flex flex-col justify-between h-full">
+        <div>
+          <div class="flex gap-1 text-amber-500 mb-4 font-bold justify-center">
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          </div>
+          <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6 text-center">"Volunteering at the community checkup camp was very rewarding. Seeing families receive free diagnostics and basic healthcare was inspiring."</p>
+        </div>
+        <div class="flex items-center justify-center gap-3 text-left mt-auto">
+          <div class="w-10 h-10 rounded-full bg-gray-200 overflow-hidden shrink-0"><img
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100"
+              class="w-full h-full object-cover"></div>
+          <div>
+            <strong class="text-xs text-secondary dark:text-white font-bold block">Kamal Al-Fayez</strong>
+            <span class="text-3xs text-gray-400 block">Camp Volunteer</span>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white dark:bg-cardWhite border border-gray-100 dark:border-gray-800 p-6 rounded-xl premium-shadow text-center flex flex-col justify-between h-full">
+        <div>
+          <div class="flex gap-1 text-amber-500 mb-4 font-bold justify-center">
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          </div>
+          <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6 text-center">"My kids received vaccines and health checks at the pediatric camp. The doctors were gentle and the checkups were completely free."</p>
+        </div>
+        <div class="flex items-center justify-center gap-3 text-left mt-auto">
+          <div class="w-10 h-10 rounded-full bg-gray-200 overflow-hidden shrink-0"><img
+              src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=100"
+              class="w-full h-full object-cover"></div>
+          <div>
+            <strong class="text-xs text-secondary dark:text-white font-bold block">Sarah Jenkins</strong>
+            <span class="text-3xs text-gray-400 block">Camp Beneficiary</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Emergency / Contact CTA -->
+  <section class="bg-[#1E293B] dark:bg-[#17222E] text-white py-16 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight" data-translate="emergencyCall">Emergency Blood Request Hotline: +1 (800) 555-0199</h2>
+        <p class="text-gray-400 text-xs sm:text-sm mt-2">Available 24/7 for urgent blood supplies, hospital coordination, and emergency response drives.</p>
+      </div>
+      <a href="contact.html"
+        class="px-6 py-3.5 bg-primary hover:bg-primaryHover text-white font-bold rounded-xl shadow-lg transition">Contact Us</a>
+    </div>
+  </section>
+
+  <footer id="main-footer"
+    class="bg-[#1E293B] dark:bg-[#17222E] text-white pt-16 pb-8 border-t border-white/5 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+      <div>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white">
+            <i data-lucide="droplet" class="w-5 h-5"></i>
+          </div>
+          <span class="font-heading text-base font-extrabold tracking-tight">LifeStream</span>
+        </div>
+        <p class="text-gray-400 text-xs leading-relaxed max-w-xs mb-6" data-translate="footerText">
+          Coordinating community-driven blood donation drives and free health screening camps to make healthcare accessible to all.
+        </p>
+        <div class="flex gap-3">
+          <a href="#" onclick="event.preventDefault();" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-primary hover:text-white flex items-center justify-center text-gray-400 transition" title="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </a>
+          <a href="#" onclick="event.preventDefault();" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-primary hover:text-white flex items-center justify-center text-gray-400 transition" title="X (Twitter)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" onclick="event.preventDefault();" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-primary hover:text-white flex items-center justify-center text-gray-400 transition" title="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+          </a>
+          <a href="#" onclick="event.preventDefault();" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-primary hover:text-white flex items-center justify-center text-gray-400 transition" title="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="font-extrabold text-sm mb-6 uppercase tracking-wider text-primary">Portal Navigation</h4>
+        <ul class="space-y-3.5 text-xs text-gray-400">
+          <li><a href="index.html" class="hover:text-white transition">Home 1</a></li>
+          <li><a href="home2.html" class="hover:text-white transition">Home 2</a></li>
+          <li><a href="departments.html" class="hover:text-white transition">Camps</a></li>
+          <li><a href="doctors.html" class="hover:text-white transition">Specialists</a></li>
+          <li><a href="about.html" class="hover:text-white transition">About Us</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-extrabold text-sm mb-6 uppercase tracking-wider text-primary">Donor & Volunteer Access</h4>
+        <ul class="space-y-3.5 text-xs text-gray-400">
+          <li><a href="login.html" class="hover:text-white transition">Sign In Portal</a></li>
+          <li><a href="signup.html" class="hover:text-white transition">Register Account</a></li>
+          <li><a href="contact.html" class="hover:text-white transition">Camp Registration</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-extrabold text-sm mb-6 uppercase tracking-wider text-primary">Support Desk</h4>
+        <div class="space-y-4 text-xs text-gray-400">
+          <p class="flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4 text-primary shrink-0"></i> <span>+1 (555) 019-2830</span></p>
+          <p class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4 text-primary shrink-0"></i> <span>contact@lifestreamcamps.example.com</span></p>
+          <p class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-primary shrink-0"></i> <span>102 LifeStream Blvd, New York, NY</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-white/5 pt-8 text-center flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-gray-500">
+      <p>&copy; 2026 LifeStream. All rights reserved.</p>
+      <div class="flex gap-6">
+        <a href="#" onclick="event.preventDefault();" class="hover:underline">Privacy Policy</a>
+        <a href="#" onclick="event.preventDefault();" class="hover:underline">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Doctor Details Modal -->
+  <div id="doctor-modal"
+    class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4 transition-all duration-300">
+    <div
+      class="bg-white dark:bg-cardWhite rounded-2xl w-full max-w-3xl overflow-hidden p-6 md:p-8 premium-shadow relative transition-colors duration-300">
+      <button onclick="window.closeDoctorModal()"
+        class="absolute top-4 right-4 p-2 text-gray-400 hover:text-gray-600 dark:hover:text-white rounded-lg">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <div id="doctor-modal-content"></div>
+    </div>
+  </div>
+
+  <!-- General Details Modal -->
+  <div id="general-modal"
+    class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4 transition-all duration-300">
+    <div
+      class="bg-white dark:bg-cardWhite rounded-2xl w-full max-w-xl overflow-hidden p-6 md:p-8 premium-shadow relative transition-colors duration-300">
+      <button onclick="window.closeGeneralModal()"
+        class="absolute top-4 right-4 p-2 text-gray-400 hover:text-gray-600 dark:hover:text-white rounded-lg">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <h3 id="general-modal-title" class="text-xl font-bold text-secondary dark:text-white mb-4">Details</h3>
+      <div id="general-modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 max-w-sm pointer-events-none"></div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>

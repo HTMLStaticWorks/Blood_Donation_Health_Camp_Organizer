@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeStream | Contact & Booking</title>
+  <meta name="description"
+    content="Enquire about our health camps, register for donation drives, and submit slot booking requests online.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <!-- Tailwind CSS 3 CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#D2143A',
+            secondary: 'var(--secondary-navy)',
+            accent: '#E6A23C',
+            softIvory: 'var(--bg-ivory)',
+            cardWhite: 'var(--card-white)',
+            darkSlate: 'var(--text-slate)',
+            primaryHover: '#B10E2E',
+            secondaryHover: '#0F172A',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Manrope', 'sans-serif'],
+          },
+          fontSize: {
+            '2xs': '0.625rem',
+            '3xs': '0.5rem',
+          }
+        }
+      }
+    }
+  </script>
+
+  <script>
+    (function() {
+      var saved = localStorage.getItem("hospital-theme");
+      var isDark = saved === "dark" || (!saved && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      if (isDark) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    })();
+  </script>
+
+  <!-- Custom Styles CSS -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body
+  class="bg-softIvory dark:bg-[#0E1620] text-darkSlate dark:text-gray-200 min-h-screen flex flex-col transition-colors duration-300">
+
+  <!-- Header -->
+  <header id="main-header"
+    class="sticky top-0 z-40 bg-white/80 dark:bg-[#17222E]/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-3">
+        <div
+          class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white shadow-md shadow-primary/20">
+          <i data-lucide="droplet" class="w-5 h-5"></i>
+        </div>
+        <span
+          class="font-heading text-lg font-extrabold text-secondary dark:text-white leading-tight tracking-tight">LifeStream</span>
+      </a>
+
+      <!-- Desktop Nav Link Menu -->
+      <nav class="hidden xl:flex items-center gap-8">
+        <a href="index.html" class="nav-link text-sm font-medium hover:text-primary transition"
+          data-translate="navHome1">Home 1</a>
+        <a href="home2.html" class="nav-link text-sm font-medium hover:text-primary transition"
+          data-translate="navHome2">Home 2</a>
+        <a href="about.html" class="nav-link text-sm font-medium hover:text-primary transition"
+          data-translate="navAbout">About Us</a>
+        <a href="departments.html" class="nav-link text-sm font-medium hover:text-primary transition"
+          data-translate="navDepts">Camps</a>
+        <a href="doctors.html" class="nav-link text-sm font-medium hover:text-primary transition"
+          data-translate="navDocs">Specialists</a>
+        <a href="contact.html" class="nav-link text-sm font-medium hover:text-primary transition"
+          data-translate="navContact">Contact</a>
+      </nav>
+
+      <!-- CTA & Utility Options -->
+      <div class="hidden xl:flex items-center gap-4">
+
+        <!-- RTL Toggle -->
+        <button id="lang-toggle-btn"
+          class="p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition text-gray-500 dark:text-gray-400"
+          title="Toggle Language/RTL">
+          <i data-lucide="arrow-left-right" class="w-4 h-4 text-primary"></i>
+        </button>
+
+        <!-- Light/Dark Mode -->
+        <button id="theme-toggle-btn"
+          class="p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition text-gray-500 dark:text-gray-400">
+          <i id="theme-toggle-icon" data-lucide="moon" class="w-4 h-4"></i>
+        </button>
+
+        <!-- Main Sign Up Button -->
+        <a id="nav-signup-btn" href="signup.html"
+          class="py-2.5 px-5 bg-primary text-white text-sm font-bold rounded-lg hover:bg-primaryHover transition shadow-md shadow-primary/10"
+          data-translate="navSignup">
+          Sign Up
+        </a>
+      </div>
+
+      <!-- Mobile navigation menu button -->
+      <button id="mobile-menu-btn"
+        class="xl:hidden p-2 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+
+    </div>
+
+    <!-- Mobile Drawer dropdown -->
+    <div id="mobile-menu"
+      class="hidden xl:hidden bg-white dark:bg-[#17222E] border-b border-gray-100 dark:border-gray-800 transition-all duration-300">
+      <div class="px-4 pt-2 pb-6 space-y-3 flex flex-col">
+        <a href="index.html" class="nav-link text-base font-medium py-2">Home 1</a>
+        <a href="home2.html" class="nav-link text-base font-medium py-2">Home 2</a>
+        <a href="about.html" class="nav-link text-base font-medium py-2">About Us</a>
+        <a href="departments.html" class="nav-link text-base font-medium py-2">Camps</a>
+        <a href="doctors.html" class="nav-link text-base font-medium py-2">Specialists</a>
+        <a href="contact.html" class="nav-link text-base font-medium py-2">Contact</a>
+
+        <hr class="border-gray-100 dark:border-gray-800 my-2">
+
+        <div class="flex items-center justify-between gap-4 py-2">
+          <button onclick="window.toggleLanguage()"
+            class="flex-1 py-2 border border-gray-200 dark:border-gray-700 text-xs font-semibold rounded-lg flex items-center justify-center gap-1.5">
+            <i data-lucide="arrow-left-right" class="w-3.5 h-3.5 text-primary"></i>
+            <span>Language</span>
+          </button>
+          <button onclick="window.toggleTheme()"
+            class="flex-1 py-2 border border-gray-200 dark:border-gray-700 text-xs font-semibold rounded-lg flex items-center justify-center gap-1.5 text-gray-500 dark:text-gray-400">
+            <i data-lucide="moon" class="w-3.5 h-3.5"></i>
+            <span>Theme Toggle</span>
+          </button>
+        </div>
+
+        <a id="mobile-signup-btn" href="signup.html"
+          class="block text-center py-2.5 bg-primary text-white font-bold rounded-lg shadow-sm"
+          data-translate="navSignup">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Title Banner -->
+  <section class="relative bg-secondary text-white py-16 text-center overflow-hidden">
+    <img src="https://images.pexels.com/photos/6129152/pexels-photo-6129152.jpeg" alt="Camp Registration"
+      class="absolute inset-0 w-full h-full object-cover opacity-35">
+    <div class="absolute inset-0 split-hero-overlay opacity-80"></div>
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+      <h1 class="text-white text-3xl sm:text-4xl font-extrabold" data-translate="navContact">Camp Booking & Contact</h1>
+      <p class="text-gray-300 text-sm mt-3 max-w-xl mx-auto">Schedule slots at our local drives and send enquiries to our coordinator desk.</p>
+    </div>
+  </section>
+
+  <!-- Content Grid -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 grid grid-cols-1 lg:grid-cols-12 gap-12 flex-1">
+    <!-- Sidebar Address Details -->
+    <div class="lg:col-span-4 space-y-6">
+      <div
+        class="bg-white dark:bg-cardWhite border border-gray-100 dark:border-gray-800 p-6 rounded-2xl premium-shadow">
+        <h3 class="text-xl font-bold text-secondary dark:text-white mb-6">Camp Information</h3>
+        <div class="space-y-4 text-sm">
+          <div class="flex gap-3">
+            <i data-lucide="map-pin" class="w-5 h-5 text-primary shrink-0"></i>
+            <div>
+              <strong
+                class="text-secondary dark:text-white font-bold block text-xs uppercase tracking-wider text-gray-400 font-sans">Headquarters Address</strong>
+              <p class="text-gray-600 dark:text-gray-400 mt-1">102 LifeStream Boulevard, New York, NY 10012</p>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <i data-lucide="phone" class="w-5 h-5 text-primary shrink-0"></i>
+            <div>
+              <strong
+                class="text-secondary dark:text-white font-bold block text-xs uppercase tracking-wider text-gray-400 font-sans">Coordinator Desk</strong>
+              <p class="text-gray-600 dark:text-gray-400 mt-1">+1 (555) 019-2830 / +1 (555) 019-2831</p>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <i data-lucide="clock" class="w-5 h-5 text-primary shrink-0"></i>
+            <div>
+              <strong
+                class="text-secondary dark:text-white font-bold block text-xs uppercase tracking-wider text-gray-400 font-sans">Support Hours</strong>
+              <p class="text-gray-600 dark:text-gray-400 mt-1">Mon - Sat: 08:00 AM - 08:00 PM<br>Sun: Emergency donor requests only</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Social Media Icons in Contact Sidebar -->
+        <div class="mt-8 pt-6 border-t border-gray-100 dark:border-gray-800">
+          <h4 class="font-extrabold text-sm mb-4 uppercase tracking-wider text-primary">Follow Us</h4>
+          <div class="flex gap-3">
+            <a href="#" onclick="event.preventDefault();" class="w-10 h-10 rounded-lg bg-gray-50 dark:bg-gray-800 hover:bg-primary hover:text-white flex items-center justify-center text-gray-400 transition" title="Facebook">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+            <a href="#" onclick="event.preventDefault();" class="w-10 h-10 rounded-lg bg-gray-50 dark:bg-gray-800 hover:bg-primary hover:text-white flex items-center justify-center text-gray-400 transition" title="X (Twitter)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" onclick="event.preventDefault();" class="w-10 h-10 rounded-lg bg-gray-50 dark:bg-gray-800 hover:bg-primary hover:text-white flex items-center justify-center text-gray-400 transition" title="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+            </a>
+            <a href="#" onclick="event.preventDefault();" class="w-10 h-10 rounded-lg bg-gray-50 dark:bg-gray-800 hover:bg-primary hover:text-white flex items-center justify-center text-gray-400 transition" title="LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Map Widget Iframe -->
+      <div
+        class="h-64 rounded-2xl bg-gray-100 overflow-hidden relative border border-gray-200 dark:border-gray-800 shadow-sm">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.210444654316!2d-74.00164628459438!3d40.73539797932976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259f63ab817d3%3A0xe54e60155b9e4a83!2sMedical%20Center%20District!5e0!3m2!1sen!2sus!4v1619472314569!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+
+    <!-- Booking Enquiry Form -->
+    <div
+      class="lg:col-span-8 bg-white dark:bg-cardWhite border border-gray-100 dark:border-gray-800 p-8 rounded-2xl premium-shadow">
+      <h3 class="text-xl font-bold text-secondary dark:text-white mb-6">Camp Slot Registration</h3>
+
+      <form id="public-booking-form" class="space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-2xs uppercase tracking-wider text-gray-400 font-bold mb-1">Registrant Full Name*</label>
+            <input id="enquiry-name" type="text" placeholder="Sarah Jenkins"
+              class="w-full border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-3 rounded-lg text-sm text-secondary dark:text-white"
+              required>
+          </div>
+          <div>
+            <label class="block text-2xs uppercase tracking-wider text-gray-400 font-bold mb-1">Mobile Number*</label>
+            <input id="enquiry-phone" type="tel" placeholder="+1 (555) 019-2834"
+              class="w-full border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-3 rounded-lg text-sm text-secondary dark:text-white"
+              required>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-2xs uppercase tracking-wider text-gray-400 font-bold mb-1">Email Address*</label>
+            <input id="enquiry-email" type="email" placeholder="sarah.jenkins@example.com"
+              class="w-full border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-3 rounded-lg text-sm text-secondary dark:text-white"
+              required>
+          </div>
+          <div>
+            <label class="block text-2xs uppercase tracking-wider text-gray-400 font-bold mb-1">Camp Program*</label>
+            <select id="enquiry-dept"
+              class="w-full border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-3 rounded-lg text-sm text-secondary dark:text-white"
+              required>
+              <!-- Filled dynamically by app.js -->
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <label class="block text-2xs uppercase tracking-wider text-gray-400 font-bold mb-1">Preferred Specialist*</label>
+            <select id="enquiry-doctor"
+              class="w-full border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-3 rounded-lg text-sm text-secondary dark:text-white"
+              required>
+              <option class="bg-white dark:bg-cardWhite text-secondary dark:text-white" value="">Select Specialist (Choose Program first)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-2xs uppercase tracking-wider text-gray-400 font-bold mb-1">Preferred Date*</label>
+            <input id="enquiry-date" type="date"
+              class="w-full border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-3 rounded-lg text-sm text-secondary dark:text-white"
+              required>
+          </div>
+          <div>
+            <label class="block text-2xs uppercase tracking-wider text-gray-400 font-bold mb-1">Preferred Time*</label>
+            <select id="enquiry-time"
+              class="w-full border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-3 rounded-lg text-sm text-secondary dark:text-white"
+              required>
+              <option class="bg-white dark:bg-cardWhite text-secondary dark:text-white" value="">Select Time Slot</option>
+              <option class="bg-white dark:bg-cardWhite text-secondary dark:text-white">09:00 AM</option>
+              <option class="bg-white dark:bg-cardWhite text-secondary dark:text-white">10:00 AM</option>
+              <option class="bg-white dark:bg-cardWhite text-secondary dark:text-white">11:00 AM</option>
+              <option class="bg-white dark:bg-cardWhite text-secondary dark:text-white">12:00 PM</option>
+              <option class="bg-white dark:bg-cardWhite text-secondary dark:text-white">01:00 PM</option>
+              <option class="bg-white dark:bg-cardWhite text-secondary dark:text-white">02:00 PM</option>
+              <option class="bg-white dark:bg-cardWhite text-secondary dark:text-white">03:00 PM</option>
+              <option class="bg-white dark:bg-cardWhite text-secondary dark:text-white">04:00 PM</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-2xs uppercase tracking-wider text-gray-400 font-bold mb-1">Additional Notes / Health Declarations</label>
+          <textarea id="enquiry-message" rows="4" placeholder="Any blood group details or medical remarks..."
+            class="w-full border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-3 rounded-lg text-sm text-secondary dark:text-white"></textarea>
+        </div>
+
+        <button type="submit"
+          class="w-full py-3.5 bg-primary hover:bg-primaryHover text-white font-bold rounded-lg text-sm shadow-md transition">
+          Submit Registration Request
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="main-footer"
+    class="bg-[#1E293B] dark:bg-[#17222E] text-white pt-16 pb-8 border-t border-white/5 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+      <div>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white">
+            <i data-lucide="droplet" class="w-5 h-5"></i>
+          </div>
+          <span class="font-heading text-base font-extrabold tracking-tight">LifeStream</span>
+        </div>
+        <p class="text-gray-400 text-xs leading-relaxed max-w-xs mb-6" data-translate="footerText">
+          Coordinating community-driven blood donation drives and free health screening camps to make healthcare accessible to all.
+        </p>
+        <div class="flex gap-3">
+          <a href="#" onclick="event.preventDefault();" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-primary hover:text-white flex items-center justify-center text-gray-400 transition" title="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </a>
+          <a href="#" onclick="event.preventDefault();" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-primary hover:text-white flex items-center justify-center text-gray-400 transition" title="X (Twitter)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" onclick="event.preventDefault();" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-primary hover:text-white flex items-center justify-center text-gray-400 transition" title="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+          </a>
+          <a href="#" onclick="event.preventDefault();" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-primary hover:text-white flex items-center justify-center text-gray-400 transition" title="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="font-extrabold text-sm mb-6 uppercase tracking-wider text-primary">Portal Navigation</h4>
+        <ul class="space-y-3.5 text-xs text-gray-400">
+          <li><a href="index.html" class="hover:text-white transition">Home 1</a></li>
+          <li><a href="home2.html" class="hover:text-white transition">Home 2</a></li>
+          <li><a href="departments.html" class="hover:text-white transition">Camps</a></li>
+          <li><a href="doctors.html" class="hover:text-white transition">Specialists</a></li>
+          <li><a href="about.html" class="hover:text-white transition">About Us</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-extrabold text-sm mb-6 uppercase tracking-wider text-primary">Donor & Volunteer Access</h4>
+        <ul class="space-y-3.5 text-xs text-gray-400">
+          <li><a href="login.html" class="hover:text-white transition">Sign In Portal</a></li>
+          <li><a href="signup.html" class="hover:text-white transition">Register Account</a></li>
+          <li><a href="contact.html" class="hover:text-white transition">Camp Registration</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-extrabold text-sm mb-6 uppercase tracking-wider text-primary">Support Desk</h4>
+        <div class="space-y-4 text-xs text-gray-400">
+          <p class="flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4 text-primary shrink-0"></i> <span>+1 (555) 019-2830</span></p>
+          <p class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4 text-primary shrink-0"></i> <span>contact@lifestreamcamps.example.com</span></p>
+          <p class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-primary shrink-0"></i> <span>102 LifeStream Blvd, New York, NY</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-white/5 pt-8 text-center flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-gray-500">
+      <p>&copy; 2026 LifeStream. All rights reserved.</p>
+      <div class="flex gap-6">
+        <a href="#" onclick="event.preventDefault();" class="hover:underline">Privacy Policy</a>
+        <a href="#" onclick="event.preventDefault();" class="hover:underline">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 max-w-sm pointer-events-none"></div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>

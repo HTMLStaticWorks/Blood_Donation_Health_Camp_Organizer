@@ -1,0 +1,157 @@
+/* Hospital Outpatient Appointment Portal - Custom Styling */
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary-teal: #D2143A;
+  --secondary-navy: #1E293B;
+  --accent-amber: #E6A23C;
+  --bg-ivory: #F7F9F8;
+  --card-white: #FFFFFF;
+  --text-slate: #243746;
+  
+  --primary-teal-hover: #B10E2E;
+  --secondary-navy-hover: #0F172A;
+}
+
+/* Base resets & typography */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-ivory);
+  color: var(--text-slate);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Manrope', sans-serif;
+  color: var(--secondary-navy);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F1F1;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary-teal);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-teal-hover);
+}
+
+/* Light / Dark Mode customizations */
+.dark {
+  --bg-ivory: #0E1620;
+  --card-white: #17222E;
+  --text-slate: #E2E8F0;
+  --secondary-navy: #F7F9F8;
+}
+
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+  color: #FFFFFF;
+}
+
+/* Fade-in Transition for SPA Views */
+.view-section {
+  display: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.view-section.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Premium shadows & hover effects */
+.premium-shadow {
+  box-shadow: 0 4px 20px -2px rgba(22, 50, 79, 0.05), 0 2px 8px -1px rgba(22, 50, 79, 0.03);
+}
+
+.premium-shadow-hover {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.premium-shadow-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(22, 50, 79, 0.08), 0 10px 10px -5px rgba(22, 50, 79, 0.04);
+}
+
+/* Split Hero layout gradient overlay */
+.split-hero-overlay {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(210, 20, 58, 0.8) 100%);
+}
+
+/* Glassmorphism subtle overlay */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass-effect {
+  background: rgba(23, 34, 46, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Button & interactive animations */
+.btn-primary {
+  background-color: var(--primary-teal);
+  color: #FFFFFF;
+  transition: all 0.2s ease;
+}
+.btn-primary:hover {
+  background-color: var(--primary-teal-hover);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background-color: var(--secondary-navy);
+  color: #FFFFFF;
+  transition: all 0.2s ease;
+}
+.btn-secondary:hover {
+  background-color: var(--secondary-navy-hover);
+  transform: translateY(-1px);
+}
+
+/* RTL Text-Alignment Utility Override */
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="rtl"] .rtl-left-align {
+  text-align: left;
+}
+
+[dir="rtl"] .rtl-flex-row-reverse {
+  flex-direction: row-reverse;
+}
+
+/* Pulse Glow for Status */
+.status-glow-active {
+  box-shadow: 0 0 0 0 rgba(8, 127, 140, 0.7);
+  animation: pulse-active 2s infinite;
+}
+
+@keyframes pulse-active {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(8, 127, 140, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(8, 127, 140, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(8, 127, 140, 0);
+  }
+}
