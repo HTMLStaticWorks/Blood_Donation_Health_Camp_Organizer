@@ -75,6 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initLanguage();
   initSession();
   setupEventListeners();
+  initBackToTopButton();
   
   // Page Specific Lifecycles
   runPageLifecycles();
@@ -137,14 +138,16 @@ function setTheme(theme) {
   localStorage.setItem("hospital-theme", theme);
   const htmlElement = document.documentElement;
   
+  const themeIcon = document.getElementById("theme-toggle-icon");
+  const mobileThemeIcon = document.getElementById("mobile-theme-icon");
   if (theme === "dark") {
     htmlElement.classList.add("dark");
-    const themeIcon = document.getElementById("theme-toggle-icon");
     if (themeIcon) themeIcon.setAttribute("data-lucide", "sun");
+    if (mobileThemeIcon) mobileThemeIcon.setAttribute("data-lucide", "sun");
   } else {
     htmlElement.classList.remove("dark");
-    const themeIcon = document.getElementById("theme-toggle-icon");
     if (themeIcon) themeIcon.setAttribute("data-lucide", "moon");
+    if (mobileThemeIcon) mobileThemeIcon.setAttribute("data-lucide", "moon");
   }
   if (window.lucide) window.lucide.createIcons();
 }
@@ -372,78 +375,59 @@ function renderDepartmentsList() {
   }).join("");
 }
 
-// Render Doctors (doctors.html)
 function renderDoctorsList() {
   const container = document.getElementById("doctors-grid");
   if (!container) return;
   
-  let filtered = window.DOCTORS;
-  if (state.filterDoctorDept !== "all") {
-    filtered = filtered.filter(d => d.deptId === state.filterDoctorDept);
-  }
-  if (state.searchDoctorQuery) {
-    const q = state.searchDoctorQuery.toLowerCase();
-    filtered = filtered.filter(d => d.name.toLowerCase().includes(q) || d.deptName.toLowerCase().includes(q));
-  }
+  const cards = container.querySelectorAll(".doctor-card");
+  if (cards.length === 0) return;
 
   const deptSelect = document.getElementById("doctor-dept-filter");
   if (deptSelect) deptSelect.value = state.filterDoctorDept;
 
-  if (filtered.length === 0) {
-    container.innerHTML = `
-      <div class="col-span-full text-center py-12">
-        <i data-lucide="user-x" class="w-12 h-12 text-gray-400 mx-auto mb-4"></i>
-        <h3 class="text-lg font-semibold text-gray-600 dark:text-gray-400">No doctors found matching the filter criteria.</h3>
-      </div>
-    `;
-    if (window.lucide) window.lucide.createIcons();
-    return;
-  }
-
-  container.innerHTML = filtered.map(doc => {
-    return `
-      <div class="bg-white dark:bg-cardWhite rounded-xl overflow-hidden border border-gray-100 dark:border-gray-800 premium-shadow premium-shadow-hover transition duration-300 flex flex-col justify-between">
-        <div>
-          <div class="relative h-72 bg-gray-50 overflow-hidden">
-            <img src="${doc.image}" alt="${doc.name}" class="w-full h-full object-cover object-top transition duration-500 hover:scale-105">
-            <span class="absolute top-4 right-4 bg-primary text-white text-xs px-3 py-1 rounded-full font-semibold">
-              ${doc.deptName}
-            </span>
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold text-secondary dark:text-white mb-1">${doc.name}</h3>
-            <p class="text-primary font-medium text-sm mb-3">${doc.qualification}</p>
-            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">${doc.bio}</p>
-            
-            <div class="space-y-2 border-t border-gray-50 dark:border-gray-800 pt-4 text-xs text-gray-500 dark:text-gray-400">
-              <div class="flex items-center gap-2">
-                <i data-lucide="clock" class="w-4 h-4 text-primary"></i>
-                <span>${doc.timing}</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <i data-lucide="award" class="w-4 h-4 text-primary"></i>
-                <span>Experience: <strong class="text-secondary dark:text-white">${doc.experience}</strong></span>
-              </div>
-              <div class="flex items-center gap-2">
-                <i data-lucide="check" class="w-4 h-4 text-primary"></i>
-                <span>Registration: <strong class="text-secondary dark:text-white">${doc.fee}</strong></span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="px-6 pb-6 pt-2 flex gap-3">
-          <button onclick="viewDoctorProfile('${doc.id}')" class="flex-1 text-center py-2 px-3 border border-primary text-primary text-sm font-semibold rounded-lg hover:bg-primary/5 transition">
-            View Profile
-          </button>
-          <button onclick="bookDoctorApt('${doc.id}')" class="flex-1 text-center py-2 px-3 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primaryHover transition shadow-sm">
-            Join Camp
-          </button>
-        </div>
-      </div>
-    `;
-  }).join("");
+  let visibleCount = 0;
   
-  if (window.lucide) window.lucide.createIcons();
+  cards.forEach(card => {
+    const name = card.getAttribute("data-name").toLowerCase();
+    const dept = card.getAttribute("data-dept");
+    const bioText = card.querySelector(".doctor-bio") ? card.querySelector(".doctor-bio").textContent.toLowerCase() : "";
+    const qualText = card.querySelector(".doctor-qualification") ? card.querySelector(".doctor-qualification").textContent.toLowerCase() : "";
+    
+    const matchDept = (state.filterDoctorDept === "all" || dept === state.filterDoctorDept);
+    let matchSearch = true;
+    
+    if (state.searchDoctorQuery) {
+      const q = state.searchDoctorQuery.toLowerCase();
+      matchSearch = name.includes(q) || bioText.includes(q) || qualText.includes(q) || dept.includes(q);
+    }
+    
+    if (matchDept && matchSearch) {
+      card.style.display = "";
+      visibleCount++;
+    } else {
+      card.style.display = "none";
+    }
+  });
+
+  // Handle "No results found" block
+  let noDocsMsg = document.getElementById("no-doctors-msg");
+  if (visibleCount === 0) {
+    if (!noDocsMsg) {
+      noDocsMsg = document.createElement("div");
+      noDocsMsg.id = "no-doctors-msg";
+      noDocsMsg.className = "col-span-full text-center py-12";
+      noDocsMsg.innerHTML = `
+        <i data-lucide="user-x" class="w-12 h-12 text-gray-400 mx-auto mb-4"></i>
+        <h3 class="text-lg font-semibold text-gray-600 dark:text-gray-400">No specialists found matching the filter criteria.</h3>
+      `;
+      container.appendChild(noDocsMsg);
+      if (window.lucide) window.lucide.createIcons();
+    } else {
+      noDocsMsg.style.display = "";
+    }
+  } else {
+    if (noDocsMsg) noDocsMsg.style.display = "none";
+  }
 }
 
 function viewDoctorProfile(docId) {
@@ -1492,6 +1476,52 @@ function showToast(message, type = "success") {
       if (container.contains(toast)) container.removeChild(toast);
     }, 300);
   }, 4000);
+}
+
+// Back to Top Button
+function initBackToTopButton() {
+  const btn = document.createElement("button");
+  btn.id = "back-to-top-btn";
+  btn.className = "fixed bottom-6 right-6 z-50 p-3 bg-primary text-white rounded-full shadow-lg opacity-0 translate-y-10 pointer-events-none transition-all duration-300 hover:bg-primaryHover hover:scale-110 flex items-center justify-center";
+  btn.setAttribute("title", "Back to Top");
+  btn.innerHTML = `<i data-lucide="chevron-up" class="w-6 h-6"></i>`;
+  document.body.appendChild(btn);
+
+  if (window.lucide) window.lucide.createIcons();
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      btn.classList.remove("opacity-0", "translate-y-10", "pointer-events-none");
+      btn.classList.add("opacity-100", "translate-y-0");
+    } else {
+      btn.classList.add("opacity-0", "translate-y-10", "pointer-events-none");
+      btn.classList.remove("opacity-100", "translate-y-0");
+    }
+  });
+
+  btn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+
+  const observer = new MutationObserver(() => {
+    const isRtl = document.documentElement.getAttribute("dir") === "rtl";
+    if (isRtl) {
+      btn.classList.remove("right-6");
+      btn.classList.add("left-6");
+    } else {
+      btn.classList.remove("left-6");
+      btn.classList.add("right-6");
+    }
+  });
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ["dir"] });
+  
+  if (document.documentElement.getAttribute("dir") === "rtl") {
+    btn.classList.remove("right-6");
+    btn.classList.add("left-6");
+  }
 }
 
 // Expose functions globally

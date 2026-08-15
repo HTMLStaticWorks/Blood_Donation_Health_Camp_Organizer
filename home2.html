@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" class="light">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LifeStream | Blood Donation & Health Camp Organizer</title>
-  <meta name="description" content="Experience community blood donation drives and free health screenings. Register for upcoming camps and access health reports.">
-  
+  <meta name="description"
+    content="Experience community blood donation drives and free health screenings. Register for upcoming camps and access health reports.">
+
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  
+
   <!-- Tailwind CSS 3 CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -31,85 +33,107 @@
             heading: ['Manrope', 'sans-serif'],
           },
           fontSize: {
-            '2xs': '0.625rem',
-            '3xs': '0.5rem',
+            '2xs': '0.675rem',
+            '3xs': '0.55rem',
+            'xs': '0.8rem',
+            'sm': '0.925rem',
+            'base': '1.05rem',
+            'lg': '1.175rem',
           }
         }
       }
     }
   </script>
-  
+
   <!-- Synchronous theme loader (prevents flash-of-unstyled-content) -->
   <script>
-    (function() {
-      var saved = localStorage.getItem("hospital-theme");
-      var isDark = saved === "dark" || (!saved && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
-      if (isDark) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
-    })();
+      (function () {
+        var saved = localStorage.getItem("hospital-theme");
+        var isDark = saved === "dark" || (!saved && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+        if (isDark) {
+          document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      })();
   </script>
-  
+
   <!-- Custom Styles CSS -->
   <link rel="stylesheet" href="css/style.css">
-  
+
   <!-- Lucide Icons CDN -->
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="bg-softIvory dark:bg-[#0E1620] text-darkSlate dark:text-gray-200 min-h-screen flex flex-col transition-colors duration-300">
+
+<body
+  class="bg-softIvory dark:bg-[#0E1620] text-darkSlate dark:text-gray-200 min-h-screen flex flex-col transition-colors duration-300 watermark-bg">
 
   <!-- Header -->
-  <header id="main-header" class="sticky top-0 z-40 bg-white/80 dark:bg-[#17222E]/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 transition-colors duration-300">
+  <header id="main-header"
+    class="sticky top-0 z-40 bg-white/80 dark:bg-[#17222E]/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-      
+
       <!-- Brand Logo -->
       <a href="index.html" class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white shadow-md shadow-primary/20">
+        <div
+          class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white shadow-md shadow-primary/20">
           <i data-lucide="droplet" class="w-5 h-5"></i>
         </div>
-        <span class="font-heading text-lg font-extrabold text-secondary dark:text-white leading-tight tracking-tight">LifeStream</span>
+        <span
+          class="font-heading text-lg font-extrabold text-secondary dark:text-white leading-tight tracking-tight">LifeStream</span>
       </a>
 
       <!-- Desktop Nav Link Menu -->
-      <nav class="hidden xl:flex items-center gap-8">
-        <a href="index.html" class="nav-link text-sm font-medium hover:text-primary transition" data-translate="navHome1">Home 1</a>
-        <a href="home2.html" class="nav-link text-sm font-medium hover:text-primary transition" data-translate="navHome2">Home 2</a>
-        <a href="about.html" class="nav-link text-sm font-medium hover:text-primary transition" data-translate="navAbout">About Us</a>
-        <a href="departments.html" class="nav-link text-sm font-medium hover:text-primary transition" data-translate="navDepts">Camps</a>
-        <a href="doctors.html" class="nav-link text-sm font-medium hover:text-primary transition" data-translate="navDocs">Specialists</a>
-        <a href="contact.html" class="nav-link text-sm font-medium hover:text-primary transition" data-translate="navContact">Contact</a>
+      <nav class="hidden lg:flex items-center lg:gap-4 xl:gap-8">
+        <a href="index.html" class="nav-link text-sm font-medium hover:text-primary transition"
+          data-translate="navHome1">Home 1</a>
+        <a href="home2.html" class="nav-link text-sm font-medium hover:text-primary transition"
+          data-translate="navHome2">Home 2</a>
+        <a href="about.html" class="nav-link text-sm font-medium hover:text-primary transition"
+          data-translate="navAbout">About Us</a>
+        <a href="departments.html" class="nav-link text-sm font-medium hover:text-primary transition"
+          data-translate="navDepts">Camps</a>
+        <a href="doctors.html" class="nav-link text-sm font-medium hover:text-primary transition"
+          data-translate="navDocs">Specialists</a>
+        <a href="contact.html" class="nav-link text-sm font-medium hover:text-primary transition"
+          data-translate="navContact">Contact</a>
       </nav>
 
       <!-- CTA & Utility Options -->
-      <div class="hidden xl:flex items-center gap-4">
-        
+      <div class="hidden lg:flex items-center gap-3 xl:gap-4">
+
         <!-- RTL Toggle -->
-        <button id="lang-toggle-btn" class="p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition text-gray-500 dark:text-gray-400" title="Toggle Language/RTL">
+        <button id="lang-toggle-btn"
+          class="p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition text-gray-500 dark:text-gray-400"
+          title="Toggle Language/RTL">
           <i data-lucide="arrow-left-right" class="w-4 h-4 text-primary"></i>
         </button>
 
         <!-- Light/Dark Mode -->
-        <button id="theme-toggle-btn" class="p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition text-gray-500 dark:text-gray-400">
-          <i id="theme-toggle-icon" data-lucide="moon" class="w-4 h-4"></i>
+        <button id="theme-toggle-btn"
+          class="p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition text-gray-500 dark:text-gray-400">
+          <i id="theme-toggle-icon" data-lucide="moon" class="w-4 h-4 text-primary"></i>
         </button>
 
         <!-- Main Sign Up Button -->
-        <a id="nav-signup-btn" href="signup.html" class="py-2.5 px-5 bg-primary text-white text-sm font-bold rounded-lg hover:bg-primaryHover transition shadow-md shadow-primary/10" data-translate="navSignup">
+        <a id="nav-signup-btn" href="signup.html"
+          class="py-2.5 px-5 bg-primary text-white text-sm font-bold rounded-lg hover:bg-primaryHover transition shadow-md shadow-primary/10"
+          data-translate="navSignup">
           Sign Up
         </a>
       </div>
 
       <!-- Mobile navigation menu button -->
-      <button id="mobile-menu-btn" class="xl:hidden p-2 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg">
+      <button id="mobile-menu-btn"
+        class="lg:hidden p-2 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg">
         <i data-lucide="menu" class="w-6 h-6"></i>
       </button>
 
     </div>
 
     <!-- Mobile Drawer dropdown -->
-    <div id="mobile-menu" class="hidden xl:hidden bg-white dark:bg-[#17222E] border-b border-gray-100 dark:border-gray-800 transition-all duration-300">
+    <div id="mobile-menu"
+      class="hidden lg:hidden bg-white dark:bg-[#17222E] border-b border-gray-100 dark:border-gray-800 transition-all duration-300">
       <div class="px-4 pt-2 pb-6 space-y-3 flex flex-col">
         <a href="index.html" class="nav-link text-base font-medium py-2">Home 1</a>
         <a href="home2.html" class="nav-link text-base font-medium py-2">Home 2</a>
@@ -117,67 +141,97 @@
         <a href="departments.html" class="nav-link text-base font-medium py-2">Camps</a>
         <a href="doctors.html" class="nav-link text-base font-medium py-2">Specialists</a>
         <a href="contact.html" class="nav-link text-base font-medium py-2">Contact</a>
-        
+
         <hr class="border-gray-100 dark:border-gray-800 my-2">
-        
+
         <div class="flex items-center justify-between gap-4 py-2">
-          <button onclick="window.toggleLanguage()" class="flex-1 py-2 border border-gray-200 dark:border-gray-700 text-xs font-semibold rounded-lg flex items-center justify-center gap-1.5">
+          <button onclick="window.toggleLanguage()"
+            class="flex-1 py-2 border border-gray-200 dark:border-gray-700 text-xs font-semibold rounded-lg flex items-center justify-center gap-1.5">
             <i data-lucide="arrow-left-right" class="w-3.5 h-3.5 text-primary"></i>
-            <span>Language</span>
+            <span>RTL</span>
           </button>
-          <button onclick="window.toggleTheme()" class="flex-1 py-2 border border-gray-200 dark:border-gray-700 text-xs font-semibold rounded-lg flex items-center justify-center gap-1.5 text-gray-500 dark:text-gray-400">
-            <i data-lucide="moon" class="w-3.5 h-3.5"></i>
+          <button onclick="window.toggleTheme()"
+            class="flex-1 py-2 border border-gray-200 dark:border-gray-700 text-xs font-semibold rounded-lg flex items-center justify-center gap-1.5 text-gray-500 dark:text-gray-400">
+            <i id="mobile-theme-icon" data-lucide="moon" class="w-3.5 h-3.5 text-primary"></i>
             <span>Theme Toggle</span>
           </button>
         </div>
 
-        <a id="mobile-signup-btn" href="signup.html" class="block text-center py-2.5 bg-primary text-white font-bold rounded-lg shadow-sm" data-translate="navSignup">Sign Up</a>
+        <a id="mobile-signup-btn" href="signup.html"
+          class="block text-center py-2.5 bg-primary text-white font-bold rounded-lg shadow-sm"
+          data-translate="navSignup">Sign Up</a>
       </div>
     </div>
   </header>
 
   <!-- Hero Section -->
-  <section class="relative overflow-hidden bg-gradient-to-br from-white via-softIvory to-primary/5 dark:from-[#0E1620] dark:via-[#0E1620] dark:to-[#16324F]/20 py-20 lg:py-32">
-    <img src="images/hero_camp_banner.png" alt="LifeStream Camps" class="absolute inset-0 w-full h-full object-cover opacity-20 dark:opacity-25 pointer-events-none">
-    
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+  <section
+    class="relative overflow-hidden bg-gradient-to-br from-white via-softIvory to-primary/5 dark:from-[#0E1620] dark:via-[#0E1620] dark:to-[#16324F]/20 py-20 lg:py-32">
+    <img src="https://static.vecteezy.com/system/resources/thumbnails/038/964/018/small/ai-generated-human-red-blood-cells-flowing-in-blood-vessels-medical-health-care-concept-photo.jpeg"
+      alt="LifeStream Camps"
+      class="absolute inset-0 w-full h-full object-cover opacity-40 dark:opacity-45 pointer-events-none max-[368px]:hidden">
+
+    <div
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
       <div class="lg:col-span-8 text-center lg:text-left">
-        <span class="bg-accent text-secondary text-2xs font-extrabold tracking-widest px-3 py-1.5 rounded-md uppercase inline-block mb-6">Community Outreach</span>
-        <h1 class="text-secondary dark:text-white text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-none tracking-tight mb-6" data-translate="heroTitle2">
+        <span
+          class="bg-accent text-secondary text-2xs font-extrabold tracking-widest px-3 py-1.5 rounded-md uppercase inline-block mb-6">Community
+          Outreach</span>
+        <h1
+          class="text-secondary dark:text-white text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-none tracking-tight mb-6"
+          data-translate="heroTitle2">
           Community Care &<br>Life-Saving Action.
         </h1>
-        <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-8 max-w-xl leading-relaxed mx-auto lg:mx-0" data-translate="heroSub2">
-          Experience community-driven healthcare. Register for local blood donation drives, schedule free health screenings, and get details on upcoming camps.
+        <!-- Separate inline image for small mobile view (368px alone) -->
+        <div
+          class="hidden max-[368px]:block mb-6 rounded-xl overflow-hidden shadow-md border border-gray-100 dark:border-gray-800">
+          <img src="https://static.vecteezy.com/system/resources/thumbnails/038/964/018/small/ai-generated-human-red-blood-cells-flowing-in-blood-vessels-medical-health-care-concept-photo.jpeg"
+            alt="LifeStream Camps" class="w-full h-48 object-cover">
+        </div>
+        <p class="text-sm sm:text-base text-gray-950 dark:text-gray-100 font-medium mb-8 max-w-xl leading-relaxed mx-auto lg:mx-0"
+          data-translate="heroSub2">
+          Experience community-driven healthcare. Register for local blood donation drives, schedule free health
+          screenings, and get details on upcoming camps.
         </p>
-        
+
         <!-- Search Box Widget -->
-        <div class="bg-white dark:bg-cardWhite border border-gray-200 dark:border-gray-800 p-2.5 rounded-2xl max-w-md shadow-2xl flex items-center justify-between gap-2 mx-auto lg:mx-0">
+        <div
+          class="bg-white dark:bg-cardWhite border border-gray-200 dark:border-gray-800 p-2.5 rounded-2xl max-w-md shadow-2xl flex items-center justify-between gap-2 mx-auto lg:mx-0">
           <div class="flex items-center gap-2 px-3 flex-1">
             <i data-lucide="search" class="w-4 h-4 text-gray-400"></i>
-            <input id="home2-search-input" type="text" placeholder="Search camps or specialists..." class="bg-transparent border-0 outline-none text-secondary dark:text-white text-xs w-full placeholder-gray-400">
+            <input id="home2-search-input" type="text" placeholder="Search camps or specialists..."
+              class="bg-transparent border-0 outline-none text-secondary dark:text-white text-xs w-full placeholder-gray-400">
           </div>
-          <button onclick="const q = document.getElementById('home2-search-input').value; if(q){ window.location.href='doctors.html?search=' + encodeURIComponent(q); }" class="py-2.5 px-5 bg-primary text-white text-xs font-bold rounded-xl hover:bg-primaryHover transition">Search</button>
+          <button
+            onclick="const q = document.getElementById('home2-search-input').value; if(q){ window.location.href='doctors.html?search=' + encodeURIComponent(q); }"
+            class="py-2.5 px-5 bg-primary text-white text-xs font-bold rounded-xl hover:bg-primaryHover transition duration-300 hover:scale-[1.02] active:scale-[0.98]">Search</button>
         </div>
       </div>
-      
+
       <!-- Consulting Widget Panel -->
-      <div class="lg:col-span-4 block bg-white dark:bg-cardWhite border border-gray-100 dark:border-gray-800 p-6 rounded-2xl shadow-xl">
+      <div
+        class="lg:col-span-4 block bg-white dark:bg-cardWhite border border-gray-100 dark:border-gray-800 p-6 rounded-2xl shadow-xl">
         <h4 class="font-extrabold text-secondary dark:text-white text-sm mb-4">Camps Active Today</h4>
         <div class="space-y-3.5">
           <div class="flex items-center gap-3">
             <div class="w-2.5 h-2.5 rounded-full bg-emerald-400 status-glow-active"></div>
-            <span class="text-xs text-gray-600 dark:text-gray-300 font-semibold">Central Square Blood Drive: Active</span>
+            <span class="text-xs text-gray-600 dark:text-gray-300 font-semibold">Central Square Blood Drive:
+              Active</span>
           </div>
           <div class="flex items-center gap-3">
             <div class="w-2.5 h-2.5 rounded-full bg-emerald-400 status-glow-active"></div>
-            <span class="text-xs text-gray-600 dark:text-gray-300 font-semibold">Community Center Health Camp: Active</span>
+            <span class="text-xs text-gray-600 dark:text-gray-300 font-semibold">Community Center Health Camp:
+              Active</span>
           </div>
           <div class="flex items-center gap-3">
             <div class="w-2.5 h-2.5 rounded-full bg-emerald-400 status-glow-active"></div>
-            <span class="text-xs text-gray-600 dark:text-gray-300 font-semibold">Municipal School Wellness: Active</span>
+            <span class="text-xs text-gray-600 dark:text-gray-300 font-semibold">Municipal School Wellness:
+              Active</span>
           </div>
         </div>
-        <a href="departments.html" class="block text-center mt-6 py-2.5 bg-primary text-white font-bold text-xs rounded-xl hover:bg-primaryHover transition">View Camps</a>
+        <a href="departments.html"
+          class="block text-center mt-6 py-2.5 bg-primary text-white font-bold text-xs rounded-xl hover:bg-primaryHover transition duration-300 hover:scale-[1.02] active:scale-[0.98]">View
+          Camps</a>
       </div>
     </div>
   </section>
@@ -189,64 +243,155 @@
       <p class="text-gray-500 text-sm mt-2">Filter camp directory by program instantly.</p>
     </div>
     <div class="flex flex-wrap gap-3 justify-center">
-      <a href="doctors.html?dept=blood-donation" class="px-5 py-2.5 bg-white dark:bg-cardWhite rounded-xl border border-gray-100 dark:border-gray-800 text-xs font-semibold hover:border-primary hover:text-primary transition premium-shadow">Blood Donation</a>
-      <a href="doctors.html?dept=general-checkup" class="px-5 py-2.5 bg-white dark:bg-cardWhite rounded-xl border border-gray-100 dark:border-gray-800 text-xs font-semibold hover:border-primary hover:text-primary transition premium-shadow">General Checkup</a>
-      <a href="doctors.html?dept=eye-camp" class="px-5 py-2.5 bg-white dark:bg-cardWhite rounded-xl border border-gray-100 dark:border-gray-800 text-xs font-semibold hover:border-primary hover:text-primary transition premium-shadow">Eye Screening</a>
-      <a href="doctors.html?dept=pediatric-camp" class="px-5 py-2.5 bg-white dark:bg-cardWhite rounded-xl border border-gray-100 dark:border-gray-800 text-xs font-semibold hover:border-primary hover:text-primary transition premium-shadow">Pediatrics</a>
-      <a href="doctors.html?dept=cardiology-camp" class="px-5 py-2.5 bg-white dark:bg-cardWhite rounded-xl border border-gray-100 dark:border-gray-800 text-xs font-semibold hover:border-primary hover:text-primary transition premium-shadow">Cardiology</a>
-      <a href="doctors.html?dept=womens-health" class="px-5 py-2.5 bg-white dark:bg-cardWhite rounded-xl border border-gray-100 dark:border-gray-800 text-xs font-semibold hover:border-primary hover:text-primary transition premium-shadow">Women's Health</a>
+      <a href="doctors.html?dept=blood-donation"
+        class="px-5 py-2.5 bg-white dark:bg-cardWhite rounded-xl border border-gray-100 dark:border-gray-800 text-xs font-semibold hover:border-primary hover:text-primary transition premium-shadow">Blood
+        Donation</a>
+      <a href="doctors.html?dept=general-checkup"
+        class="px-5 py-2.5 bg-white dark:bg-cardWhite rounded-xl border border-gray-100 dark:border-gray-800 text-xs font-semibold hover:border-primary hover:text-primary transition premium-shadow">General
+        Checkup</a>
+      <a href="doctors.html?dept=eye-camp"
+        class="px-5 py-2.5 bg-white dark:bg-cardWhite rounded-xl border border-gray-100 dark:border-gray-800 text-xs font-semibold hover:border-primary hover:text-primary transition premium-shadow">Eye
+        Screening</a>
+      <a href="doctors.html?dept=pediatric-camp"
+        class="px-5 py-2.5 bg-white dark:bg-cardWhite rounded-xl border border-gray-100 dark:border-gray-800 text-xs font-semibold hover:border-primary hover:text-primary transition premium-shadow">Pediatrics</a>
+      <a href="doctors.html?dept=cardiology-camp"
+        class="px-5 py-2.5 bg-white dark:bg-cardWhite rounded-xl border border-gray-100 dark:border-gray-800 text-xs font-semibold hover:border-primary hover:text-primary transition premium-shadow">Cardiology</a>
+      <a href="doctors.html?dept=womens-health"
+        class="px-5 py-2.5 bg-white dark:bg-cardWhite rounded-xl border border-gray-100 dark:border-gray-800 text-xs font-semibold hover:border-primary hover:text-primary transition premium-shadow">Women's
+        Health</a>
     </div>
   </section>
   </section>
 
   <!-- Doctor Availability Grid -->
-  <section class="bg-white dark:bg-[#111A24] py-20 transition-colors duration-300">
+  <section class="bg-softIvory dark:bg-[#111A24] py-20 transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
         <h2 class="text-3xl font-extrabold text-secondary dark:text-white">Specialist Leads Availabilities</h2>
         <p class="text-gray-500 text-sm mt-2">Available consultation hours for lead camp medical officers.</p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="p-6 bg-softIvory dark:bg-cardWhite border border-gray-100 dark:border-gray-800 rounded-xl">
-          <h4 class="font-bold text-secondary dark:text-white text-base">Dr. Marcus Sterling</h4>
-          <span class="text-xs text-primary block mt-1">Blood Donation Lead</span>
-          <div class="mt-4 pt-4 border-t border-gray-200/50 dark:border-gray-800 space-y-2 text-xs text-gray-500 dark:text-gray-400">
-            <p>Mon, Wed, Fri</p>
-            <p class="font-semibold text-secondary dark:text-white">09:00 AM - 01:00 PM</p>
+        
+        <!-- Card 1 -->
+        <div class="bg-white dark:bg-cardWhite border border-gray-100 dark:border-gray-800 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+          <div class="h-52 bg-gray-100 relative overflow-hidden group">
+            <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?q=80&w=600"
+              class="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105" alt="Dr. Alistair Vance">
+            <span class="absolute top-3 right-3 bg-emerald-500 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-md uppercase tracking-wider">Available</span>
           </div>
-          <a href="contact.html?doc=doc-1" class="block text-center mt-6 py-2 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primaryHover transition">Register</a>
-        </div>
-        <div class="p-6 bg-softIvory dark:bg-cardWhite border border-gray-100 dark:border-gray-800 rounded-xl">
-          <h4 class="font-bold text-secondary dark:text-white text-base">Dr. Elena Rostova</h4>
-          <span class="text-xs text-primary block mt-1">Cardiology Lead</span>
-          <div class="mt-4 pt-4 border-t border-gray-200/50 dark:border-gray-800 space-y-2 text-xs text-gray-500 dark:text-gray-400">
-            <p>Tue, Thu, Sat</p>
-            <p class="font-semibold text-secondary dark:text-white">10:00 AM - 02:00 PM</p>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h4 class="font-bold text-secondary dark:text-white text-base">Dr. Alistair Vance</h4>
+              <span class="text-xs text-primary font-semibold block mt-1">Haematology Lead</span>
+              
+              <div class="mt-4 pt-4 border-t border-gray-100 dark:border-gray-800 space-y-2.5 text-xs text-gray-600 dark:text-gray-400">
+                <div class="flex items-center gap-2">
+                  <i data-lucide="calendar" class="w-3.5 h-3.5 text-primary shrink-0"></i>
+                  <span>Mon, Wed, Fri</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-lucide="clock" class="w-3.5 h-3.5 text-primary shrink-0"></i>
+                  <span class="font-semibold text-secondary dark:text-white">09:00 AM - 01:00 PM</span>
+                </div>
+              </div>
+            </div>
+            
+            <a href="contact.html?doc=alistair"
+              class="block text-center mt-6 py-2.5 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primaryHover transition hover:scale-[1.02] active:scale-[0.98]">Register Session</a>
           </div>
-          <a href="contact.html?doc=doc-2" class="block text-center mt-6 py-2 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primaryHover transition">Register</a>
         </div>
-        <div class="p-6 bg-softIvory dark:bg-cardWhite border border-gray-100 dark:border-gray-800 rounded-xl">
-          <h4 class="font-bold text-secondary dark:text-white text-base">Dr. Sarah Jenkins</h4>
-          <span class="text-xs text-primary block mt-1">Pediatric Lead</span>
-          <div class="mt-4 pt-4 border-t border-gray-200/50 dark:border-gray-800 space-y-2 text-xs text-gray-500 dark:text-gray-400">
-            <p>Mon, Tue, Thu</p>
-            <p class="font-semibold text-secondary dark:text-white">01:00 PM - 05:00 PM</p>
+
+        <!-- Card 2 -->
+        <div class="bg-white dark:bg-cardWhite border border-gray-100 dark:border-gray-800 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+          <div class="h-52 bg-gray-100 relative overflow-hidden group">
+            <img src="https://media.heragenda.com/brand-img/10702/0x0/wp-content/uploads/2019/12/woman-wearing-gray-notch-lapel-suit-jacket-2381069.jpg"
+              class="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105" alt="Dr. Beatrice Thornton">
+            <span class="absolute top-3 right-3 bg-emerald-500 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-md uppercase tracking-wider">Available</span>
           </div>
-          <a href="contact.html?doc=doc-3" class="block text-center mt-6 py-2 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primaryHover transition">Register</a>
-        </div>
-        <div class="p-6 bg-softIvory dark:bg-cardWhite border border-gray-100 dark:border-gray-800 rounded-xl">
-          <h4 class="font-bold text-secondary dark:text-white text-base">Dr. Kenji Sato</h4>
-          <span class="text-xs text-primary block mt-1">Dental Lead</span>
-          <div class="mt-4 pt-4 border-t border-gray-200/50 dark:border-gray-800 space-y-2 text-xs text-gray-500 dark:text-gray-400">
-            <p>Mon - Fri</p>
-            <p class="font-semibold text-secondary dark:text-white">09:00 AM - 01:00 PM</p>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h4 class="font-bold text-secondary dark:text-white text-base">Dr.Thornton</h4>
+              <span class="text-xs text-primary font-semibold block mt-1">Cardiology Specialist</span>
+              
+              <div class="mt-4 pt-4 border-t border-gray-100 dark:border-gray-800 space-y-2.5 text-xs text-gray-600 dark:text-gray-400">
+                <div class="flex items-center gap-2">
+                  <i data-lucide="calendar" class="w-3.5 h-3.5 text-primary shrink-0"></i>
+                  <span>Tue, Thu, Sat</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-lucide="clock" class="w-3.5 h-3.5 text-primary shrink-0"></i>
+                  <span class="font-semibold text-secondary dark:text-white">10:00 AM - 02:00 PM</span>
+                </div>
+              </div>
+            </div>
+            
+            <a href="contact.html?doc=beatrice"
+              class="block text-center mt-6 py-2.5 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primaryHover transition hover:scale-[1.02] active:scale-[0.98]">Register Session</a>
           </div>
-          <a href="contact.html?doc=doc-7" class="block text-center mt-6 py-2 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primaryHover transition">Register</a>
         </div>
+
+        <!-- Card 3 -->
+        <div class="bg-white dark:bg-cardWhite border border-gray-100 dark:border-gray-800 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+          <div class="h-52 bg-gray-100 relative overflow-hidden group">
+            <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=600"
+              class="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105" alt="Dr. Charles Kade">
+            <span class="absolute top-3 right-3 bg-emerald-500 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-md uppercase tracking-wider">Available</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h4 class="font-bold text-secondary dark:text-white text-base">Dr. Charles Kade</h4>
+              <span class="text-xs text-primary font-semibold block mt-1">Pediatric Lead</span>
+              
+              <div class="mt-4 pt-4 border-t border-gray-100 dark:border-gray-800 space-y-2.5 text-xs text-gray-600 dark:text-gray-400">
+                <div class="flex items-center gap-2">
+                  <i data-lucide="calendar" class="w-3.5 h-3.5 text-primary shrink-0"></i>
+                  <span>Mon, Tue, Thu</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-lucide="clock" class="w-3.5 h-3.5 text-primary shrink-0"></i>
+                  <span class="font-semibold text-secondary dark:text-white">01:00 PM - 05:00 PM</span>
+                </div>
+              </div>
+            </div>
+            
+            <a href="contact.html?doc=charles"
+              class="block text-center mt-6 py-2.5 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primaryHover transition hover:scale-[1.02] active:scale-[0.98]">Register Session</a>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="bg-white dark:bg-cardWhite border border-gray-100 dark:border-gray-800 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+          <div class="h-52 bg-gray-100 relative overflow-hidden group">
+            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=600"
+              class="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105" alt="Dr. Diana Prince">
+            <span class="absolute top-3 right-3 bg-emerald-500 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-md uppercase tracking-wider">Available</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h4 class="font-bold text-secondary dark:text-white text-base">Dr. Diana Prince</h4>
+              <span class="text-xs text-primary font-semibold block mt-1">Dental Officer</span>
+              
+              <div class="mt-4 pt-4 border-t border-gray-100 dark:border-gray-800 space-y-2.5 text-xs text-gray-600 dark:text-gray-400">
+                <div class="flex items-center gap-2">
+                  <i data-lucide="calendar" class="w-3.5 h-3.5 text-primary shrink-0"></i>
+                  <span>Mon - Fri</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-lucide="clock" class="w-3.5 h-3.5 text-primary shrink-0"></i>
+                  <span class="font-semibold text-secondary dark:text-white">09:00 AM - 01:00 PM</span>
+                </div>
+              </div>
+            </div>
+            
+            <a href="contact.html?doc=diana"
+              class="block text-center mt-6 py-2.5 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primaryHover transition hover:scale-[1.02] active:scale-[0.98]">Register Session</a>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
-    </div>
+  </div>
   </section>
 
   <!-- 3-Step Process -->
@@ -257,19 +402,28 @@
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
       <div class="flex flex-col items-center text-center">
-        <div class="w-14 h-14 bg-primary text-white rounded-2xl flex items-center justify-center font-bold text-lg mb-6 shadow-md shadow-primary/20">1</div>
+        <div
+          class="w-14 h-14 bg-primary text-white rounded-2xl flex items-center justify-center font-bold text-lg mb-6 shadow-md shadow-primary/20">
+          1</div>
         <h4 class="font-bold text-secondary dark:text-white text-base mb-2">Find a Camp</h4>
-        <p class="text-gray-500 text-xs max-w-xs">Select active camp locations or blood drive programs from directories.</p>
+        <p class="text-gray-500 text-xs max-w-xs">Select active camp locations or blood drive programs from directories.
+        </p>
       </div>
       <div class="flex flex-col items-center text-center">
-        <div class="w-14 h-14 bg-primary text-white rounded-2xl flex items-center justify-center font-bold text-lg mb-6 shadow-md shadow-primary/20">2</div>
+        <div
+          class="w-14 h-14 bg-primary text-white rounded-2xl flex items-center justify-center font-bold text-lg mb-6 shadow-md shadow-primary/20">
+          2</div>
         <h4 class="font-bold text-secondary dark:text-white text-base mb-2">Register Online</h4>
-        <p class="text-gray-500 text-xs max-w-xs">Fill out the simple donor or volunteer interest form in under 2 minutes.</p>
+        <p class="text-gray-500 text-xs max-w-xs">Fill out the simple donor or volunteer interest form in under 2
+          minutes.</p>
       </div>
       <div class="flex flex-col items-center text-center">
-        <div class="w-14 h-14 bg-primary text-white rounded-2xl flex items-center justify-center font-bold text-lg mb-6 shadow-md shadow-primary/20">3</div>
+        <div
+          class="w-14 h-14 bg-primary text-white rounded-2xl flex items-center justify-center font-bold text-lg mb-6 shadow-md shadow-primary/20">
+          3</div>
         <h4 class="font-bold text-secondary dark:text-white text-base mb-2">Save Lives</h4>
-        <p class="text-gray-500 text-xs max-w-xs">Show up at the venue, undergo screening, and support the community.</p>
+        <p class="text-gray-500 text-xs max-w-xs">Show up at the venue, undergo screening, and support the community.
+        </p>
       </div>
     </div>
   </section>
@@ -278,72 +432,96 @@
   <section class="bg-white dark:bg-[#111A24] py-20 transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       <div class="rounded-3xl overflow-hidden shadow-xl border border-gray-100 dark:border-gray-800 h-[380px]">
-        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800" alt="Laboratory" class="w-full h-full object-cover">
+        <img src="https://fastpacehealth.com/wp-content/uploads/2023/09/Blood-Work-817x470.jpg" alt="Laboratory"
+          class="w-full h-full object-cover">
       </div>
       <div>
         <span class="text-primary text-xs font-bold uppercase tracking-wider block mb-2">Digital Diagnostics</span>
         <h2 class="text-3xl font-extrabold text-secondary dark:text-white mb-6">Access Blood & Camp Reports</h2>
-        <p class="text-gray-600 dark:text-gray-400 text-sm mb-6 leading-relaxed">No need to wait for printed files. Access your blood donor certificates, camp diagnostic reports, and medical screenings securely online.</p>
+        <p class="text-gray-600 dark:text-gray-400 text-sm mb-6 leading-relaxed">No need to wait for printed files.
+          Access your blood donor certificates, camp diagnostic reports, and medical screenings securely online.</p>
         <div class="flex flex-wrap gap-4">
-          <a href="signup.html" class="px-5 py-3 bg-primary text-white text-xs font-bold rounded-xl shadow-sm hover:bg-primaryHover transition">Sign Up Now</a>
-          <a href="about.html" class="px-5 py-3 border border-secondary/20 dark:border-white/20 text-secondary dark:text-white text-xs font-bold rounded-xl hover:bg-secondary/5 transition">Learn More</a>
+          <a href="signup.html"
+            class="px-5 py-3 bg-primary text-white text-xs font-bold rounded-xl shadow-sm hover:bg-primaryHover transition">Sign
+            Up Now</a>
+          <a href="about.html"
+            class="px-5 py-3 border border-secondary/20 dark:border-white/20 text-secondary dark:text-white text-xs font-bold rounded-xl hover:bg-secondary/5 transition">Learn
+            More</a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Camp Portfolio Gallery Section -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 bg-gray-50/50 dark:bg-[#0E1620]/30 rounded-3xl border border-gray-100/50 dark:border-gray-800/40">
+  <section
+    class="max-w-7xl min-[1440px]:max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-20 bg-gray-50/50 dark:bg-[#0E1620]/30 rounded-3xl border border-gray-100/50 dark:border-gray-800/40">
     <div class="text-center max-w-xl mx-auto mb-12">
       <h2 class="text-3xl font-extrabold text-secondary dark:text-white">Our Camp Activities Gallery</h2>
-      <p class="text-gray-500 text-sm mt-2">Glance through the safe, hygienic, and highly-coordinated blood drives and wellness screening camps organized recently.</p>
+      <p class="text-gray-500 text-sm mt-2">Glance through the safe, hygienic, and highly-coordinated blood drives and
+        wellness screening camps organized recently.</p>
     </div>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <div class="group relative overflow-hidden rounded-xl h-56 shadow-sm border border-gray-100 dark:border-gray-800">
-        <img src="images/camp_blood_donation.png" alt="Blood Donation Drive" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+      <div class="group relative overflow-hidden rounded-xl h-56 min-[1440px]:h-72 shadow-sm border border-gray-100 dark:border-gray-800">
+        <img src="images/camp_blood_donation.png" alt="Blood Donation Drive"
+          class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
           <span class="text-white text-xs font-bold font-heading">Blood Donation Drive</span>
         </div>
       </div>
-      <div class="group relative overflow-hidden rounded-xl h-56 shadow-sm border border-gray-100 dark:border-gray-800">
-        <img src="images/camp_cardiology.png" alt="Cardiology Screening" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+      <div class="group relative overflow-hidden rounded-xl h-56 min-[1440px]:h-72 shadow-sm border border-gray-100 dark:border-gray-800">
+        <img src="images/camp_cardiology.png" alt="Cardiology Screening"
+          class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
           <span class="text-white text-xs font-bold font-heading">Cardiology & ECG Screening</span>
         </div>
       </div>
-      <div class="group relative overflow-hidden rounded-xl h-56 shadow-sm border border-gray-100 dark:border-gray-800">
-        <img src="images/camp_eye_screening.png" alt="Eye Screening" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+      <div class="group relative overflow-hidden rounded-xl h-56 min-[1440px]:h-72 shadow-sm border border-gray-100 dark:border-gray-800">
+        <img src="images/camp_eye_screening.png" alt="Eye Screening"
+          class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
           <span class="text-white text-xs font-bold font-heading">Eye Screening & Spectacles</span>
         </div>
       </div>
-      <div class="group relative overflow-hidden rounded-xl h-56 shadow-sm border border-gray-100 dark:border-gray-800">
-        <img src="images/camp_pediatric.png" alt="Pediatric Checkup" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+      <div class="group relative overflow-hidden rounded-xl h-56 min-[1440px]:h-72 shadow-sm border border-gray-100 dark:border-gray-800">
+        <img src="images/camp_pediatric.png" alt="Pediatric Checkup"
+          class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
           <span class="text-white text-xs font-bold font-heading">Pediatric & Child Wellness</span>
         </div>
       </div>
-      <div class="group relative overflow-hidden rounded-xl h-56 shadow-sm border border-gray-100 dark:border-gray-800">
-        <img src="images/camp_general_checkup.png" alt="General Checkup" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+      <div class="group relative overflow-hidden rounded-xl h-56 min-[1440px]:h-72 shadow-sm border border-gray-100 dark:border-gray-800">
+        <img src="images/camp_general_checkup.png" alt="General Checkup"
+          class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
           <span class="text-white text-xs font-bold font-heading">General Medicine & Diagnostics</span>
         </div>
       </div>
-      <div class="group relative overflow-hidden rounded-xl h-56 shadow-sm border border-gray-100 dark:border-gray-800">
-        <img src="images/camp_dental.png" alt="Dental Hygiene" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+      <div class="group relative overflow-hidden rounded-xl h-56 min-[1440px]:h-72 shadow-sm border border-gray-100 dark:border-gray-800">
+        <img src="images/camp_dental.png" alt="Dental Hygiene"
+          class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
           <span class="text-white text-xs font-bold font-heading">Dental Health & Hygiene</span>
         </div>
       </div>
-      <div class="group relative overflow-hidden rounded-xl h-56 shadow-sm border border-gray-100 dark:border-gray-800">
-        <img src="images/camp_womens_health.png" alt="Womens Wellness" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+      <div class="group relative overflow-hidden rounded-xl h-56 min-[1440px]:h-72 shadow-sm border border-gray-100 dark:border-gray-800">
+        <img src="images/camp_womens_health.png" alt="Womens Wellness"
+          class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
           <span class="text-white text-xs font-bold font-heading">Women's Health & Wellness</span>
         </div>
       </div>
-      <div class="group relative overflow-hidden rounded-xl h-56 shadow-sm border border-gray-100 dark:border-gray-800">
-        <img src="images/camp_ent.png" alt="ENT Checkup" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+      <div class="group relative overflow-hidden rounded-xl h-56 min-[1440px]:h-72 shadow-sm border border-gray-100 dark:border-gray-800">
+        <img src="images/camp_ent.png" alt="ENT Checkup"
+          class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
           <span class="text-white text-xs font-bold font-heading">ENT Screening</span>
         </div>
       </div>
@@ -356,72 +534,109 @@
       <div class="absolute inset-0 bg-primary/10"></div>
       <div class="relative z-10 max-w-2xl">
         <h3 class="text-2xl sm:text-3xl font-extrabold mb-4 text-white">Join Our Lifesaving Mission Today</h3>
-        <p class="text-gray-300 text-xs sm:text-sm leading-relaxed mb-6">We coordinate with local communities, municipal authorities, and volunteer doctors to set up free medical camps and blood donation units where they are needed most.</p>
-        <a href="signup.html" class="px-5 py-2.5 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primaryHover transition">Join as Donor or Volunteer &rarr;</a>
+        <p class="text-gray-300 text-xs sm:text-sm leading-relaxed mb-6">We coordinate with local communities, municipal
+          authorities, and volunteer doctors to set up free medical camps and blood donation units where they are needed
+          most.</p>
+        <a href="signup.html"
+          class="px-5 py-2.5 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primaryHover transition">Join
+          as Donor or Volunteer &rarr;</a>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer id="main-footer" class="bg-[#1E293B] dark:bg-[#17222E] text-white pt-16 pb-8 border-t border-white/5 transition-colors duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+  <footer id="main-footer"
+    class="bg-white dark:bg-[#17222E] text-darkSlate dark:text-gray-300 pt-16 pb-8 border-t border-gray-100 dark:border-gray-800/50 transition-colors duration-300">
+    <div
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-12">
       <div>
         <div class="flex items-center gap-3 mb-6">
           <div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white">
             <i data-lucide="droplet" class="w-5 h-5"></i>
           </div>
-          <span class="font-heading text-base font-extrabold tracking-tight">LifeStream</span>
+          <span
+            class="font-heading text-lg font-extrabold tracking-tight leading-tight text-secondary dark:text-white">LifeStream</span>
         </div>
-        <p class="text-gray-400 text-xs leading-relaxed max-w-xs mb-6" data-translate="footerText">
-          Coordinating community-driven blood donation drives and free health screening camps to make healthcare accessible to all.
+        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed max-w-xs mb-6" data-translate="footerText">
+          Coordinating community-driven blood donation drives and free health screening camps to make healthcare
+          accessible to all.
         </p>
         <div class="flex gap-3">
-          <a href="#" onclick="event.preventDefault();" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-primary hover:text-white flex items-center justify-center text-gray-400 transition" title="Facebook">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          <a href="#" onclick="event.preventDefault();"
+            class="w-8 h-8 rounded-lg bg-gray-100 dark:bg-white/5 hover:bg-primary hover:text-white flex items-center justify-center text-gray-500 dark:text-gray-400 transition"
+            title="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
           </a>
-          <a href="#" onclick="event.preventDefault();" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-primary hover:text-white flex items-center justify-center text-gray-400 transition" title="X (Twitter)">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          <a href="#" onclick="event.preventDefault();"
+            class="w-8 h-8 rounded-lg bg-gray-100 dark:bg-white/5 hover:bg-primary hover:text-white flex items-center justify-center text-gray-500 dark:text-gray-400 transition"
+            title="X (Twitter)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"
+              class="w-4 h-4">
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
           </a>
-          <a href="#" onclick="event.preventDefault();" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-primary hover:text-white flex items-center justify-center text-gray-400 transition" title="Instagram">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+          <a href="#" onclick="event.preventDefault();"
+            class="w-8 h-8 rounded-lg bg-gray-100 dark:bg-white/5 hover:bg-primary hover:text-white flex items-center justify-center text-gray-500 dark:text-gray-400 transition"
+            title="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+            </svg>
           </a>
-          <a href="#" onclick="event.preventDefault();" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-primary hover:text-white flex items-center justify-center text-gray-400 transition" title="LinkedIn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          <a href="#" onclick="event.preventDefault();"
+            class="w-8 h-8 rounded-lg bg-gray-100 dark:bg-white/5 hover:bg-primary hover:text-white flex items-center justify-center text-gray-500 dark:text-gray-400 transition"
+            title="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect width="4" height="12" x="2" y="9"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
           </a>
         </div>
       </div>
 
       <div>
-        <h4 class="font-extrabold text-sm mb-6 uppercase tracking-wider text-primary">Portal Navigation</h4>
-        <ul class="space-y-3.5 text-xs text-gray-400">
-          <li><a href="index.html" class="hover:text-white transition">Home 1</a></li>
-          <li><a href="home2.html" class="hover:text-white transition">Home 2</a></li>
-          <li><a href="departments.html" class="hover:text-white transition">Camps</a></li>
-          <li><a href="doctors.html" class="hover:text-white transition">Specialists</a></li>
-          <li><a href="about.html" class="hover:text-white transition">About Us</a></li>
+        <h4 class="font-extrabold text-base mb-6 uppercase tracking-wider text-primary">Portal Navigation</h4>
+        <ul class="space-y-3.5 text-sm text-gray-600 dark:text-gray-400">
+          <li><a href="index.html" class="hover:text-primary transition">Home 1</a></li>
+          <li><a href="home2.html" class="hover:text-primary transition">Home 2</a></li>
+          <li><a href="departments.html" class="hover:text-primary transition">Camps</a></li>
+          <li><a href="doctors.html" class="hover:text-primary transition">Specialists</a></li>
+          <li><a href="about.html" class="hover:text-primary transition">About Us</a></li>
         </ul>
       </div>
 
       <div>
-        <h4 class="font-extrabold text-sm mb-6 uppercase tracking-wider text-primary">Donor & Volunteer Access</h4>
-        <ul class="space-y-3.5 text-xs text-gray-400">
-          <li><a href="login.html" class="hover:text-white transition">Sign In Portal</a></li>
-          <li><a href="signup.html" class="hover:text-white transition">Register Account</a></li>
-          <li><a href="contact.html" class="hover:text-white transition">Camp Registration</a></li>
+        <h4 class="font-extrabold text-base mb-6 uppercase tracking-wider text-primary">Donor & Volunteer</h4>
+        <ul class="space-y-3.5 text-sm text-gray-600 dark:text-gray-400">
+          <li><a href="login.html" class="hover:text-primary transition">Sign In Portal</a></li>
+          <li><a href="signup.html" class="hover:text-primary transition">Register Account</a></li>
+          <li><a href="contact.html" class="hover:text-primary transition">Camp Registration</a></li>
         </ul>
       </div>
 
       <div>
-        <h4 class="font-extrabold text-sm mb-6 uppercase tracking-wider text-primary">Support Desk</h4>
-        <div class="space-y-4 text-xs text-gray-400">
-          <p class="flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4 text-primary shrink-0"></i> <span>+1 (555) 019-2830</span></p>
-          <p class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4 text-primary shrink-0"></i> <span>contact@lifestreamcamps.example.com</span></p>
-          <p class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-primary shrink-0"></i> <span>102 LifeStream Blvd, New York, NY</span></p>
+        <h4 class="font-extrabold text-base mb-6 uppercase tracking-wider text-primary">Support Desk</h4>
+        <div class="space-y-4 text-sm text-gray-600 dark:text-gray-400">
+          <p class="flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4 text-primary shrink-0"></i> <span>+1
+              (555) 019-2830</span></p>
+          <p class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4 text-primary shrink-0"></i>
+            <span>contact@life.example.com</span></p>
+          <p class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-primary shrink-0"></i>
+            <span>102 Blvd, New York, NY</span></p>
         </div>
       </div>
     </div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-white/5 pt-8 text-center flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-gray-500">
+    <div
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-gray-100 dark:border-gray-800/50 pt-8 text-center flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-gray-500">
       <p>&copy; 2026 LifeStream. All rights reserved.</p>
       <div class="flex gap-6">
         <a href="#" onclick="event.preventDefault();" class="hover:underline">Privacy Policy</a>
@@ -431,18 +646,24 @@
   </footer>
 
   <!-- Modal components -->
-  <div id="doctor-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4 transition-all duration-300">
-    <div class="bg-white dark:bg-cardWhite rounded-2xl w-full max-w-3xl overflow-hidden p-6 md:p-8 premium-shadow relative transition-colors duration-300">
-      <button onclick="window.closeDoctorModal()" class="absolute top-4 right-4 p-2 text-gray-400 hover:text-gray-600 dark:hover:text-white rounded-lg">
+  <div id="doctor-modal"
+    class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4 transition-all duration-300">
+    <div
+      class="bg-white dark:bg-cardWhite rounded-2xl w-full max-w-3xl overflow-hidden p-6 md:p-8 premium-shadow relative transition-colors duration-300">
+      <button onclick="window.closeDoctorModal()"
+        class="absolute top-4 right-4 p-2 text-gray-400 hover:text-gray-600 dark:hover:text-white rounded-lg">
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
       <div id="doctor-modal-content"></div>
     </div>
   </div>
 
-  <div id="general-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4 transition-all duration-300">
-    <div class="bg-white dark:bg-cardWhite rounded-2xl w-full max-w-xl overflow-hidden p-6 md:p-8 premium-shadow relative transition-colors duration-300">
-      <button onclick="window.closeGeneralModal()" class="absolute top-4 right-4 p-2 text-gray-400 hover:text-gray-600 dark:hover:text-white rounded-lg">
+  <div id="general-modal"
+    class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4 transition-all duration-300">
+    <div
+      class="bg-white dark:bg-cardWhite rounded-2xl w-full max-w-xl overflow-hidden p-6 md:p-8 premium-shadow relative transition-colors duration-300">
+      <button onclick="window.closeGeneralModal()"
+        class="absolute top-4 right-4 p-2 text-gray-400 hover:text-gray-600 dark:hover:text-white rounded-lg">
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
       <h3 id="general-modal-title" class="text-xl font-bold text-secondary dark:text-white mb-4">Details</h3>
@@ -456,4 +677,5 @@
   <script src="js/data.js"></script>
   <script src="js/app.js"></script>
 </body>
+
 </html>

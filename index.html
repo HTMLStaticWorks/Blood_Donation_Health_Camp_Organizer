@@ -33,8 +33,12 @@
             heading: ['Manrope', 'sans-serif'],
           },
           fontSize: {
-            '2xs': '0.625rem',
-            '3xs': '0.5rem',
+            '2xs': '0.675rem',
+            '3xs': '0.55rem',
+            'xs': '0.8rem',
+            'sm': '0.925rem',
+            'base': '1.05rem',
+            'lg': '1.175rem',
           }
         }
       }
@@ -62,7 +66,7 @@
 </head>
 
 <body
-  class="bg-softIvory dark:bg-[#0E1620] text-darkSlate dark:text-gray-200 min-h-screen flex flex-col transition-colors duration-300">
+  class="bg-softIvory dark:bg-[#0E1620] text-darkSlate dark:text-gray-200 min-h-screen flex flex-col transition-colors duration-300 watermark-bg">
 
   <!-- Sticky Header -->
   <header id="main-header"
@@ -80,7 +84,7 @@
       </a>
 
       <!-- Desktop Nav Link Menu -->
-      <nav class="hidden xl:flex items-center gap-8">
+      <nav class="hidden lg:flex items-center lg:gap-4 xl:gap-8">
         <a href="index.html" class="nav-link text-sm font-medium hover:text-primary transition"
           data-translate="navHome1">Home 1</a>
         <a href="home2.html" class="nav-link text-sm font-medium hover:text-primary transition"
@@ -96,7 +100,7 @@
       </nav>
 
       <!-- CTA & Utility Options -->
-      <div class="hidden xl:flex items-center gap-4">
+      <div class="hidden lg:flex items-center gap-3 xl:gap-4">
 
         <!-- RTL Toggle -->
         <button id="lang-toggle-btn"
@@ -108,7 +112,7 @@
         <!-- Light/Dark Mode -->
         <button id="theme-toggle-btn"
           class="p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition text-gray-500 dark:text-gray-400">
-          <i id="theme-toggle-icon" data-lucide="moon" class="w-4 h-4"></i>
+          <i id="theme-toggle-icon" data-lucide="moon" class="w-4 h-4 text-primary"></i>
         </button>
 
         <!-- Main Sign Up Button -->
@@ -121,7 +125,7 @@
 
       <!-- Mobile navigation menu button -->
       <button id="mobile-menu-btn"
-        class="xl:hidden p-2 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg">
+        class="lg:hidden p-2 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg">
         <i data-lucide="menu" class="w-6 h-6"></i>
       </button>
 
@@ -129,7 +133,7 @@
 
     <!-- Mobile Drawer dropdown -->
     <div id="mobile-menu"
-      class="hidden xl:hidden bg-white dark:bg-[#17222E] border-b border-gray-100 dark:border-gray-800 transition-all duration-300">
+      class="hidden lg:hidden bg-white dark:bg-[#17222E] border-b border-gray-100 dark:border-gray-800 transition-all duration-300">
       <div class="px-4 pt-2 pb-6 space-y-3 flex flex-col">
         <a href="index.html" class="nav-link text-base font-medium py-2">Home 1</a>
         <a href="home2.html" class="nav-link text-base font-medium py-2">Home 2</a>
@@ -144,11 +148,11 @@
           <button onclick="window.toggleLanguage()"
             class="flex-1 py-2 border border-gray-200 dark:border-gray-700 text-xs font-semibold rounded-lg flex items-center justify-center gap-1.5">
             <i data-lucide="arrow-left-right" class="w-3.5 h-3.5 text-primary"></i>
-            <span>Language</span>
+            <span>RTL</span>
           </button>
           <button onclick="window.toggleTheme()"
             class="flex-1 py-2 border border-gray-200 dark:border-gray-700 text-xs font-semibold rounded-lg flex items-center justify-center gap-1.5 text-gray-500 dark:text-gray-400">
-            <i data-lucide="moon" class="w-3.5 h-3.5"></i>
+            <i id="mobile-theme-icon" data-lucide="moon" class="w-3.5 h-3.5 text-primary"></i>
             <span>Theme Toggle</span>
           </button>
         </div>
@@ -182,14 +186,14 @@
         </p>
         <div class="flex flex-wrap gap-4">
           <a href="signup.html"
-            class="px-6 py-3 bg-primary text-white text-base font-bold rounded-xl hover:bg-primaryHover transition shadow-lg shadow-primary/20"
+            class="px-6 py-3 bg-primary text-white text-base font-bold rounded-xl hover:bg-primaryHover transition shadow-lg shadow-primary/20 duration-300 hover:scale-[1.02] active:scale-[0.98]"
             data-translate="btnBookNow">
-            Register as Volunteer/Donor
+            Register
           </a>
           <a href="departments.html"
-            class="px-6 py-3 border border-secondary/20 dark:border-white/20 text-secondary dark:text-white text-base font-bold rounded-xl hover:bg-secondary/5 transition"
+            class="px-6 py-3 border border-[#1E293B]/50 dark:border-white/20 text-secondary dark:text-white text-base font-bold rounded-xl hover:bg-primary hover:text-white hover:border-primary transition duration-300 hover:scale-[1.02] active:scale-[0.98]"
             data-translate="btnFindDoc">
-            Explore Camps
+            Explore
           </a>
         </div>
       </div>
@@ -232,9 +236,9 @@
           <select
             class="w-full border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-3 rounded-lg text-sm"
             required>
-            <option>Morning (08:00 AM - 12:00 PM)</option>
-            <option>Afternoon (12:00 PM - 04:00 PM)</option>
-            <option>Evening (04:00 PM - 08:00 PM)</option>
+            <option>Morning (08:00 AM)</option>
+            <option>Afternoon (12:00 PM)</option>
+            <option>Evening (04:00 PM)</option>
           </select>
         </div>
         <button type="submit"
@@ -321,7 +325,7 @@
         <div
           class="bg-white dark:bg-cardWhite border border-gray-100 dark:border-gray-800 rounded-xl overflow-hidden premium-shadow">
           <div class="h-64 bg-gray-100"><img
-              src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=600"
+              src="https://omkarlifellinehospital.com/wp-content/uploads/2025/12/DOCTOR-PROFILE-3.jpg"
               class="w-full h-full object-cover object-top"></div>
           <div class="p-6">
             <h3 class="text-xl font-bold text-secondary dark:text-white">Dr. Marcus Sterling</h3>
@@ -338,7 +342,7 @@
         </div>
         <div
           class="bg-white dark:bg-cardWhite border border-gray-100 dark:border-gray-800 rounded-xl overflow-hidden premium-shadow">
-          <div class="h-64 bg-gray-100"><img src="https://images.pexels.com/photos/5998467/pexels-photo-5998467.jpeg"
+          <div class="h-64 bg-gray-100"><img src="https://medrecruit.medworld.com/_next/image?url=https%3A%2F%2Fmed-cms-bucket-production.s3.ap-southeast-2.amazonaws.com%2Flarge_Become_brand_1200x628_light_green_d45f70c5d2.png&w=3840&q=75"
               class="w-full h-full object-cover object-top"></div>
           <div class="p-6">
             <h3 class="text-xl font-bold text-secondary dark:text-white">Dr. Elena Rostova</h3>
@@ -355,7 +359,7 @@
         </div>
         <div
           class="bg-white dark:bg-cardWhite border border-gray-100 dark:border-gray-800 rounded-xl overflow-hidden premium-shadow">
-          <div class="h-64 bg-gray-100"><img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=600"
+          <div class="h-64 bg-gray-100"><img src="https://media.istockphoto.com/id/1373258655/photo/happy-nurse-at-hospital.jpg?s=612x612&w=0&k=20&c=mt8_LDMnWZHxAVm64SjmqBqbsTnrmDI3DlCq-jv3afA="
               class="w-full h-full object-cover object-top"></div>
           <div class="p-6">
             <h3 class="text-xl font-bold text-secondary dark:text-white">Dr. Sarah Jenkins</h3>
@@ -415,7 +419,7 @@
       </div>
       <div
         class="bg-gray-100 rounded-3xl overflow-hidden shadow-xl border border-gray-100 dark:border-gray-800 h-[380px]">
-        <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?q=80&w=800"
+        <img src="https://assets.clevelandclinic.org/transform/eda75854-d5b6-4bcd-8f51-0784df908a61/healthScreeningTests-200489719-770x533-1_jpg"
           alt="Health screening" class="w-full h-full object-cover">
       </div>
     </div>
@@ -431,7 +435,7 @@
           class="bg-softIvory dark:bg-cardWhite rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden premium-shadow premium-shadow-hover transition duration-300 flex flex-col justify-between text-center">
           <div>
             <div class="h-44 bg-gray-100 mb-6">
-              <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=600&auto=format&fit=crop" alt="Age & Weight" class="w-full h-full object-cover">
+              <img src="https://marathi.cdn.zeenews.com/marathi/sites/default/files/2023/03/06/565525-weight-checking.jpg?im=FitAndFill=(480,270)" alt="Age & Weight" class="w-full h-full object-cover">
             </div>
             <div class="px-6 pb-6">
               <h4 class="text-lg font-bold text-secondary dark:text-white mb-2">Age & Weight</h4>
@@ -443,7 +447,7 @@
           class="bg-softIvory dark:bg-cardWhite rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden premium-shadow premium-shadow-hover transition duration-300 flex flex-col justify-between text-center">
           <div>
             <div class="h-44 bg-gray-100 mb-6">
-              <img src="https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?q=80&w=600&auto=format&fit=crop" alt="General Health" class="w-full h-full object-cover">
+              <img src="https://www.kasturimedicalcentre.com/wp-content/uploads/2026/05/02-05-2026_WB-Kasturi-Medical-1.jpg" alt="General Health" class="w-full h-full object-cover">
             </div>
             <div class="px-6 pb-6">
               <h4 class="text-lg font-bold text-secondary dark:text-white mb-2">General Health</h4>
@@ -455,7 +459,7 @@
           class="bg-softIvory dark:bg-cardWhite rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden premium-shadow premium-shadow-hover transition duration-300 flex flex-col justify-between text-center">
           <div>
             <div class="h-44 bg-gray-100 mb-6">
-              <img src="https://images.unsplash.com/photo-1615461066870-40b124f293db?q=80&w=600&auto=format&fit=crop" alt="Donation Frequency" class="w-full h-full object-cover">
+              <img src="https://media.post.rvohealth.io/wp-content/uploads/2020/08/blood-plasma-donation-732x549-thumbnail-732x549.jpg" alt="Donation Frequency" class="w-full h-full object-cover">
             </div>
             <div class="px-6 pb-6">
               <h4 class="text-lg font-bold text-secondary dark:text-white mb-2">Donation Frequency</h4>
@@ -487,7 +491,7 @@
         </div>
         <div class="flex items-center justify-center gap-3 text-left mt-auto">
           <div class="w-10 h-10 rounded-full bg-gray-200 overflow-hidden shrink-0"><img
-              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=100"
+              src="https://media.istockphoto.com/id/1413765605/photo/portrait-of-successful-african-american-business-woman.jpg?s=612x612&w=0&k=20&c=7SssKFIuj7EYG_c2A0ZIJUqZpd3hmjQW8P_TMF1WJ5I="
               class="w-full h-full object-cover"></div>
           <div>
             <strong class="text-xs text-secondary dark:text-white font-bold block">Clarissa Vance</strong>
@@ -508,7 +512,7 @@
         </div>
         <div class="flex items-center justify-center gap-3 text-left mt-auto">
           <div class="w-10 h-10 rounded-full bg-gray-200 overflow-hidden shrink-0"><img
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100"
+              src="https://media.istockphoto.com/id/1636023306/photo/portrait-of-young-hispanic-businessman-inside-office-boss-in-business-suit-smiling-and.jpg?s=612x612&w=0&k=20&c=3aC2P0heBBWlaVdFq6P711W3TMw7Lqgb5Wru6xwH8_w="
               class="w-full h-full object-cover"></div>
           <div>
             <strong class="text-xs text-secondary dark:text-white font-bold block">Kamal Al-Fayez</strong>
@@ -529,7 +533,7 @@
         </div>
         <div class="flex items-center justify-center gap-3 text-left mt-auto">
           <div class="w-10 h-10 rounded-full bg-gray-200 overflow-hidden shrink-0"><img
-              src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=100"
+              src="https://media.gettyimages.com/id/1354842602/photo/portrait-of-a-young-businesswoman-working-on-a-laptop-in-an-office.jpg?s=612x612&w=gi&k=20&c=TWakDzE5LVcAGztV1fGQ8-Ca3EHk8m9lAaAeBW_HVUc="
               class="w-full h-full object-cover"></div>
           <div>
             <strong class="text-xs text-secondary dark:text-white font-bold block">Sarah Jenkins</strong>
@@ -541,78 +545,79 @@
   </section>
 
   <!-- Emergency / Contact CTA -->
-  <section class="bg-[#1E293B] dark:bg-[#17222E] text-white py-16 transition-colors duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-      <div>
-        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight" data-translate="emergencyCall">Emergency Blood Request Hotline: +1 (800) 555-0199</h2>
-        <p class="text-gray-400 text-xs sm:text-sm mt-2">Available 24/7 for urgent blood supplies, hospital coordination, and emergency response drives.</p>
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+    <div class="bg-[#1E293B] dark:bg-[#17222E] text-white rounded-3xl py-12 px-8 md:px-12 flex flex-col md:flex-row justify-between items-center gap-6 shadow-xl relative overflow-hidden transition-colors duration-300">
+      <div class="absolute inset-0 bg-primary/5 pointer-events-none"></div>
+      <div class="relative z-10">
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight !text-white" data-translate="emergencyCall">Emergency Blood Request Hotline: +1 (800) 555-0199</h2>
+        <p class="text-gray-300 text-sm mt-2">Available 24/7 for urgent blood supplies, hospital coordination, and emergency response drives.</p>
       </div>
       <a href="contact.html"
-        class="px-6 py-3.5 bg-primary hover:bg-primaryHover text-white font-bold rounded-xl shadow-lg transition">Contact Us</a>
+        class="relative z-10 px-6 py-3.5 bg-primary hover:bg-primaryHover text-white font-bold rounded-xl shadow-lg transition duration-300 hover:scale-[1.02] active:scale-[0.98] shrink-0">Contact Us</a>
     </div>
   </section>
 
   <footer id="main-footer"
-    class="bg-[#1E293B] dark:bg-[#17222E] text-white pt-16 pb-8 border-t border-white/5 transition-colors duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+    class="bg-white dark:bg-[#17222E] text-darkSlate dark:text-gray-300 pt-16 pb-8 border-t border-gray-100 dark:border-gray-800/50 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-12">
       <div>
         <div class="flex items-center gap-3 mb-6">
           <div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white">
             <i data-lucide="droplet" class="w-5 h-5"></i>
           </div>
-          <span class="font-heading text-base font-extrabold tracking-tight">LifeStream</span>
+          <span class="font-heading text-lg font-extrabold tracking-tight leading-tight text-secondary dark:text-white">LifeStream</span>
         </div>
-        <p class="text-gray-400 text-xs leading-relaxed max-w-xs mb-6" data-translate="footerText">
+        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed max-w-xs mb-6" data-translate="footerText">
           Coordinating community-driven blood donation drives and free health screening camps to make healthcare accessible to all.
         </p>
         <div class="flex gap-3">
-          <a href="#" onclick="event.preventDefault();" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-primary hover:text-white flex items-center justify-center text-gray-400 transition" title="Facebook">
+          <a href="#" onclick="event.preventDefault();" class="w-8 h-8 rounded-lg bg-gray-100 dark:bg-white/5 hover:bg-primary hover:text-white flex items-center justify-center text-gray-500 dark:text-gray-400 transition" title="Facebook">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
           </a>
-          <a href="#" onclick="event.preventDefault();" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-primary hover:text-white flex items-center justify-center text-gray-400 transition" title="X (Twitter)">
+          <a href="#" onclick="event.preventDefault();" class="w-8 h-8 rounded-lg bg-gray-100 dark:bg-white/5 hover:bg-primary hover:text-white flex items-center justify-center text-gray-500 dark:text-gray-400 transition" title="X (Twitter)">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
           </a>
-          <a href="#" onclick="event.preventDefault();" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-primary hover:text-white flex items-center justify-center text-gray-400 transition" title="Instagram">
+          <a href="#" onclick="event.preventDefault();" class="w-8 h-8 rounded-lg bg-gray-100 dark:bg-white/5 hover:bg-primary hover:text-white flex items-center justify-center text-gray-500 dark:text-gray-400 transition" title="Instagram">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
           </a>
-          <a href="#" onclick="event.preventDefault();" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-primary hover:text-white flex items-center justify-center text-gray-400 transition" title="LinkedIn">
+          <a href="#" onclick="event.preventDefault();" class="w-8 h-8 rounded-lg bg-gray-100 dark:bg-white/5 hover:bg-primary hover:text-white flex items-center justify-center text-gray-500 dark:text-gray-400 transition" title="LinkedIn">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
           </a>
         </div>
       </div>
 
       <div>
-        <h4 class="font-extrabold text-sm mb-6 uppercase tracking-wider text-primary">Portal Navigation</h4>
-        <ul class="space-y-3.5 text-xs text-gray-400">
-          <li><a href="index.html" class="hover:text-white transition">Home 1</a></li>
-          <li><a href="home2.html" class="hover:text-white transition">Home 2</a></li>
-          <li><a href="departments.html" class="hover:text-white transition">Camps</a></li>
-          <li><a href="doctors.html" class="hover:text-white transition">Specialists</a></li>
-          <li><a href="about.html" class="hover:text-white transition">About Us</a></li>
+        <h4 class="font-extrabold text-base mb-6 uppercase tracking-wider text-primary">Portal Navigation</h4>
+        <ul class="space-y-3.5 text-sm text-gray-600 dark:text-gray-400">
+          <li><a href="index.html" class="hover:text-primary transition">Home 1</a></li>
+          <li><a href="home2.html" class="hover:text-primary transition">Home 2</a></li>
+          <li><a href="departments.html" class="hover:text-primary transition">Camps</a></li>
+          <li><a href="doctors.html" class="hover:text-primary transition">Specialists</a></li>
+          <li><a href="about.html" class="hover:text-primary transition">About Us</a></li>
         </ul>
       </div>
 
       <div>
-        <h4 class="font-extrabold text-sm mb-6 uppercase tracking-wider text-primary">Donor & Volunteer Access</h4>
-        <ul class="space-y-3.5 text-xs text-gray-400">
-          <li><a href="login.html" class="hover:text-white transition">Sign In Portal</a></li>
-          <li><a href="signup.html" class="hover:text-white transition">Register Account</a></li>
-          <li><a href="contact.html" class="hover:text-white transition">Camp Registration</a></li>
+        <h4 class="font-extrabold text-base mb-6 uppercase tracking-wider text-primary">Donor & Volunteer</h4>
+        <ul class="space-y-3.5 text-sm text-gray-600 dark:text-gray-400">
+          <li><a href="login.html" class="hover:text-primary transition">Sign In Portal</a></li>
+          <li><a href="signup.html" class="hover:text-primary transition">Register Account</a></li>
+          <li><a href="contact.html" class="hover:text-primary transition">Camp Registration</a></li>
         </ul>
       </div>
 
       <div>
-        <h4 class="font-extrabold text-sm mb-6 uppercase tracking-wider text-primary">Support Desk</h4>
-        <div class="space-y-4 text-xs text-gray-400">
+        <h4 class="font-extrabold text-base mb-6 uppercase tracking-wider text-primary">Support Desk</h4>
+        <div class="space-y-4 text-sm text-gray-600 dark:text-gray-400">
           <p class="flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4 text-primary shrink-0"></i> <span>+1 (555) 019-2830</span></p>
-          <p class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4 text-primary shrink-0"></i> <span>contact@lifestreamcamps.example.com</span></p>
-          <p class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-primary shrink-0"></i> <span>102 LifeStream Blvd, New York, NY</span></p>
+          <p class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4 text-primary shrink-0"></i> <span>contact@life.example.com</span></p>
+          <p class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-primary shrink-0"></i> <span>102 Blvd, New York, NY</span></p>
         </div>
       </div>
     </div>
 
     <div
-      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-white/5 pt-8 text-center flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-gray-500">
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-gray-100 dark:border-gray-800/50 pt-8 text-center flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-gray-500">
       <p>&copy; 2026 LifeStream. All rights reserved.</p>
       <div class="flex gap-6">
         <a href="#" onclick="event.preventDefault();" class="hover:underline">Privacy Policy</a>

@@ -33,8 +33,12 @@
             heading: ['Manrope', 'sans-serif'],
           },
           fontSize: {
-            '2xs': '0.625rem',
-            '3xs': '0.5rem',
+            '2xs': '0.675rem',
+            '3xs': '0.55rem',
+            'xs': '0.8rem',
+            'sm': '0.925rem',
+            'base': '1.05rem',
+            'lg': '1.175rem',
           }
         }
       }
@@ -61,7 +65,7 @@
 </head>
 
 <body
-  class="bg-softIvory dark:bg-[#0E1620] text-darkSlate dark:text-gray-200 min-h-screen flex flex-col transition-colors duration-300">
+  class="bg-softIvory dark:bg-[#0E1620] text-darkSlate dark:text-gray-200 min-h-screen flex flex-col transition-colors duration-300 watermark-bg">
 
   <!-- Header -->
   <header id="main-header"
@@ -79,7 +83,7 @@
       </a>
 
       <!-- Desktop Nav Link Menu -->
-      <nav class="hidden xl:flex items-center gap-8">
+      <nav class="hidden lg:flex items-center lg:gap-4 xl:gap-8">
         <a href="index.html" class="nav-link text-sm font-medium hover:text-primary transition"
           data-translate="navHome1">Home 1</a>
         <a href="home2.html" class="nav-link text-sm font-medium hover:text-primary transition"
@@ -95,7 +99,7 @@
       </nav>
 
       <!-- CTA & Utility Options -->
-      <div class="hidden xl:flex items-center gap-4">
+      <div class="hidden lg:flex items-center gap-3 xl:gap-4">
 
         <!-- RTL Toggle -->
         <button id="lang-toggle-btn"
@@ -107,7 +111,7 @@
         <!-- Light/Dark Mode -->
         <button id="theme-toggle-btn"
           class="p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition text-gray-500 dark:text-gray-400">
-          <i id="theme-toggle-icon" data-lucide="moon" class="w-4 h-4"></i>
+          <i id="theme-toggle-icon" data-lucide="moon" class="w-4 h-4 text-primary"></i>
         </button>
 
         <!-- Main Sign Up Button -->
@@ -120,7 +124,7 @@
 
       <!-- Mobile navigation menu button -->
       <button id="mobile-menu-btn"
-        class="xl:hidden p-2 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg">
+        class="lg:hidden p-2 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg">
         <i data-lucide="menu" class="w-6 h-6"></i>
       </button>
 
@@ -128,7 +132,7 @@
 
     <!-- Mobile Drawer dropdown -->
     <div id="mobile-menu"
-      class="hidden xl:hidden bg-white dark:bg-[#17222E] border-b border-gray-100 dark:border-gray-800 transition-all duration-300">
+      class="hidden lg:hidden bg-white dark:bg-[#17222E] border-b border-gray-100 dark:border-gray-800 transition-all duration-300">
       <div class="px-4 pt-2 pb-6 space-y-3 flex flex-col">
         <a href="index.html" class="nav-link text-base font-medium py-2">Home 1</a>
         <a href="home2.html" class="nav-link text-base font-medium py-2">Home 2</a>
@@ -143,11 +147,11 @@
           <button onclick="window.toggleLanguage()"
             class="flex-1 py-2 border border-gray-200 dark:border-gray-700 text-xs font-semibold rounded-lg flex items-center justify-center gap-1.5">
             <i data-lucide="arrow-left-right" class="w-3.5 h-3.5 text-primary"></i>
-            <span>Language</span>
+            <span>RTL</span>
           </button>
           <button onclick="window.toggleTheme()"
             class="flex-1 py-2 border border-gray-200 dark:border-gray-700 text-xs font-semibold rounded-lg flex items-center justify-center gap-1.5 text-gray-500 dark:text-gray-400">
-            <i data-lucide="moon" class="w-3.5 h-3.5"></i>
+            <i id="mobile-theme-icon" data-lucide="moon" class="w-3.5 h-3.5 text-primary"></i>
             <span>Theme Toggle</span>
           </button>
         </div>
@@ -160,13 +164,19 @@
   </header>
 
   <!-- Title Banner -->
-  <section class="relative bg-secondary text-white py-16 text-center overflow-hidden">
-    <img src="https://images.pexels.com/photos/21826918/pexels-photo-21826918.jpeg" alt="Camp Specialists"
-      class="absolute inset-0 w-full h-full object-cover opacity-35">
-    <div class="absolute inset-0 split-hero-overlay opacity-80"></div>
-    <div class="max-w-7xl mx-auto px-4 relative z-10">
-      <h1 class="text-white text-3xl sm:text-4xl font-extrabold" data-translate="navDocs">Specialists</h1>
-      <p class="text-gray-300 text-sm mt-3 max-w-xl mx-auto">Search our directory of certified medical volunteers, lead coordinators, and clinical officers.</p>
+  <section class="relative bg-secondary text-white overflow-hidden py-16 lg:py-20">
+    <div class="absolute inset-0 split-hero-overlay opacity-90"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      <div class="lg:col-span-7 text-center lg:text-left">
+        <h1 class="text-white text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight" data-translate="navDocs">Specialists</h1>
+        <p class="text-gray-300 text-sm sm:text-base mt-4 max-w-xl mx-auto lg:mx-0">Search our directory of certified medical volunteers, lead coordinators, and clinical officers.</p>
+      </div>
+      <div class="lg:col-span-5 relative">
+        <div class="absolute inset-0 bg-primary rounded-2xl rotate-3 opacity-20"></div>
+        <div class="relative rounded-2xl overflow-hidden shadow-xl border-2 border-white/10">
+          <img src="https://cdn.prod.website-files.com/66bd394eedeb9d6ee29898c6/682f5450a046c241920c1e6f_Three%20doctors%20standing%20side%20by%20side%2C%20crossing%20their%20arms.jpg" alt="Camp Specialists" class="w-full h-48 sm:h-64 md:h-[400px] lg:h-64 object-cover">
+        </div>
+      </div>
     </div>
   </section>
 
@@ -207,72 +217,441 @@
   <!-- Doctor Cards Grid -->
   <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-1">
     <div id="doctors-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Populated dynamically by app.js -->
+      
+      <!-- Doctor 1: Dr. Alistair Vance -->
+      <div class="doctor-card bg-white dark:bg-cardWhite rounded-xl overflow-hidden border border-gray-100 dark:border-gray-800 premium-shadow premium-shadow-hover transition duration-300 flex flex-col justify-between"
+           data-name="Dr. Alistair Vance" data-dept="blood-donation">
+        <div>
+          <div class="relative h-72 bg-gray-50 overflow-hidden">
+            <img src="https://regencyhealthcare.in/wp-content/uploads/2026/08/Dr.-Kiran-Suthar-Profile.webp" alt="Dr. Alistair Vance" class="w-full h-full object-cover object-top transition duration-500 hover:scale-105">
+            <span class="absolute top-4 right-4 bg-primary text-white text-xs px-3 py-1 rounded-full font-semibold">
+              Blood Donation Camps
+            </span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-secondary dark:text-white mb-1">Dr. Alistair Vance</h3>
+            <p class="doctor-qualification text-primary font-medium text-sm mb-3">MD (Hematology), Blood Bank Officer</p>
+            <p class="doctor-bio text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">Lead Blood Bank Officer specializing in safe transfusion protocols, mobile blood collection, and donor health screening.</p>
+            
+            <div class="space-y-2 border-t border-gray-50 dark:border-gray-800 pt-4 text-xs text-gray-500 dark:text-gray-400">
+              <div class="flex items-center gap-2">
+                <i data-lucide="clock" class="w-4 h-4 text-primary"></i>
+                <span>Mon, Wed, Fri (09:00 AM - 01:00 PM)</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="award" class="w-4 h-4 text-primary"></i>
+                <span>Experience: <strong class="text-secondary dark:text-white">16 Years</strong></span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-primary"></i>
+                <span>Registration: <strong class="text-secondary dark:text-white">Free</strong></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-2 flex gap-3">
+          <button onclick="viewDoctorProfile('doc-1')" class="flex-1 text-center py-2 px-3 border border-primary text-primary text-sm font-semibold rounded-lg hover:bg-primary/5 transition">
+            View Profile
+          </button>
+          <button onclick="bookDoctorApt('doc-1')" class="flex-1 text-center py-2 px-3 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primaryHover transition shadow-sm">
+            Join Camp
+          </button>
+        </div>
+      </div>
+
+      <!-- Doctor 2: Dr. Beatrice Thornton -->
+      <div class="doctor-card bg-white dark:bg-cardWhite rounded-xl overflow-hidden border border-gray-100 dark:border-gray-800 premium-shadow premium-shadow-hover transition duration-300 flex flex-col justify-between"
+           data-name="Dr. Beatrice Thornton" data-dept="cardiology-camp">
+        <div>
+          <div class="relative h-72 bg-gray-50 overflow-hidden">
+            <img src="https://drupal-cdn-hfaeddcdbng5hfbg.a01.azurefd.net/sites/default/files/styles/doctor_card/public/2026-02/dr-p-l-dhingra_0.jpg.webp?itok=Yq3tg__7" alt="Dr. Beatrice Thornton" class="w-full h-full object-cover object-top transition duration-500 hover:scale-105">
+            <span class="absolute top-4 right-4 bg-primary text-white text-xs px-3 py-1 rounded-full font-semibold">
+              Cardiology & ECG Screening
+            </span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-secondary dark:text-white mb-1">Dr. Beatrice Thornton</h3>
+            <p class="doctor-qualification text-primary font-medium text-sm mb-3">MD, DM (Cardiology), FACC</p>
+            <p class="doctor-bio text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">Senior Cardiologist coordinating free community heart screenings, ECG analysis, and hypertension counseling.</p>
+            
+            <div class="space-y-2 border-t border-gray-50 dark:border-gray-800 pt-4 text-xs text-gray-500 dark:text-gray-400">
+              <div class="flex items-center gap-2">
+                <i data-lucide="clock" class="w-4 h-4 text-primary"></i>
+                <span>Tue, Thu, Sat (10:00 AM - 02:00 PM)</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="award" class="w-4 h-4 text-primary"></i>
+                <span>Experience: <strong class="text-secondary dark:text-white">12 Years</strong></span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-primary"></i>
+                <span>Registration: <strong class="text-secondary dark:text-white">Free</strong></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-2 flex gap-3">
+          <button onclick="viewDoctorProfile('doc-2')" class="flex-1 text-center py-2 px-3 border border-primary text-primary text-sm font-semibold rounded-lg hover:bg-primary/5 transition">
+            View Profile
+          </button>
+          <button onclick="bookDoctorApt('doc-2')" class="flex-1 text-center py-2 px-3 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primaryHover transition shadow-sm">
+            Join Camp
+          </button>
+        </div>
+      </div>
+
+      <!-- Doctor 3: Dr. Charles Kade -->
+      <div class="doctor-card bg-white dark:bg-cardWhite rounded-xl overflow-hidden border border-gray-100 dark:border-gray-800 premium-shadow premium-shadow-hover transition duration-300 flex flex-col justify-between"
+           data-name="Dr. Charles Kade" data-dept="pediatric-camp">
+        <div>
+          <div class="relative h-72 bg-gray-50 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=600" alt="Dr. Charles Kade" class="w-full h-full object-cover object-top transition duration-500 hover:scale-105">
+            <span class="absolute top-4 right-4 bg-primary text-white text-xs px-3 py-1 rounded-full font-semibold">
+              Pediatric & Child Wellness
+            </span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-secondary dark:text-white mb-1">Dr. Charles Kade</h3>
+            <p class="doctor-qualification text-primary font-medium text-sm mb-3">MD (Pediatrics), MPH</p>
+            <p class="doctor-bio text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">Dedicated pediatrician focusing on community child immunizations, nutrition guidelines, and growth checkup camps.</p>
+            
+            <div class="space-y-2 border-t border-gray-50 dark:border-gray-800 pt-4 text-xs text-gray-500 dark:text-gray-400">
+              <div class="flex items-center gap-2">
+                <i data-lucide="clock" class="w-4 h-4 text-primary"></i>
+                <span>Mon, Tue, Thu (01:00 PM - 05:00 PM)</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="award" class="w-4 h-4 text-primary"></i>
+                <span>Experience: <strong class="text-secondary dark:text-white">14 Years</strong></span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-primary"></i>
+                <span>Registration: <strong class="text-secondary dark:text-white">Free</strong></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-2 flex gap-3">
+          <button onclick="viewDoctorProfile('doc-3')" class="flex-1 text-center py-2 px-3 border border-primary text-primary text-sm font-semibold rounded-lg hover:bg-primary/5 transition">
+            View Profile
+          </button>
+          <button onclick="bookDoctorApt('doc-3')" class="flex-1 text-center py-2 px-3 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primaryHover transition shadow-sm">
+            Join Camp
+          </button>
+        </div>
+      </div>
+
+      <!-- Doctor 4: Dr. Diana Prince -->
+      <div class="doctor-card bg-white dark:bg-cardWhite rounded-xl overflow-hidden border border-gray-100 dark:border-gray-800 premium-shadow premium-shadow-hover transition duration-300 flex flex-col justify-between"
+           data-name="Dr. Diana Prince" data-dept="general-checkup">
+        <div>
+          <div class="relative h-72 bg-gray-50 overflow-hidden">
+            <img src="https://www.ovumhospitals.com/_next/image?url=https%3A%2F%2Fa.eka.care%2Fdoctor-avatar%2Fdo1770275858193&w=3840&q=75" alt="Dr. Diana Prince" class="w-full h-full object-cover object-top transition duration-500 hover:scale-105">
+            <span class="absolute top-4 right-4 bg-primary text-white text-xs px-3 py-1 rounded-full font-semibold">
+              General Medicine & Diagnostics
+            </span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-secondary dark:text-white mb-1">Dr. Diana Prince</h3>
+            <p class="doctor-qualification text-primary font-medium text-sm mb-3">MD (Internal Medicine)</p>
+            <p class="doctor-bio text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">General Physician lead for primary checkup camps, blood sugar level diagnosis, and preventative wellness consulting.</p>
+            
+            <div class="space-y-2 border-t border-gray-50 dark:border-gray-800 pt-4 text-xs text-gray-500 dark:text-gray-400">
+              <div class="flex items-center gap-2">
+                <i data-lucide="clock" class="w-4 h-4 text-primary"></i>
+                <span>Wed, Fri (10:00 AM - 03:00 PM)</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="award" class="w-4 h-4 text-primary"></i>
+                <span>Experience: <strong class="text-secondary dark:text-white">11 Years</strong></span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-primary"></i>
+                <span>Registration: <strong class="text-secondary dark:text-white">Free</strong></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-2 flex gap-3">
+          <button onclick="viewDoctorProfile('doc-4')" class="flex-1 text-center py-2 px-3 border border-primary text-primary text-sm font-semibold rounded-lg hover:bg-primary/5 transition">
+            View Profile
+          </button>
+          <button onclick="bookDoctorApt('doc-4')" class="flex-1 text-center py-2 px-3 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primaryHover transition shadow-sm">
+            Join Camp
+          </button>
+        </div>
+      </div>
+
+      <!-- Doctor 5: Dr. Evelyn Harper -->
+      <div class="doctor-card bg-white dark:bg-cardWhite rounded-xl overflow-hidden border border-gray-100 dark:border-gray-800 premium-shadow premium-shadow-hover transition duration-300 flex flex-col justify-between"
+           data-name="Dr. Evelyn Harper" data-dept="eye-camp">
+        <div>
+          <div class="relative h-72 bg-gray-50 overflow-hidden">
+            <img src="https://www.lilavatihospital.com/uploads/source/doctors/1746782811_Dr.%20Nisha%20Gandhi.webp" alt="Dr. Evelyn Harper" class="w-full h-full object-cover object-top transition duration-500 hover:scale-105">
+            <span class="absolute top-4 right-4 bg-primary text-white text-xs px-3 py-1 rounded-full font-semibold">
+              Eye Screening & Spectacles
+            </span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-secondary dark:text-white mb-1">Dr. Evelyn Harper</h3>
+            <p class="doctor-qualification text-primary font-medium text-sm mb-3">MS (Ophthalmology)</p>
+            <p class="doctor-bio text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">Veteran Eye Surgeon leading cataract screening drives and spectacles distribution units in community centers.</p>
+            
+            <div class="space-y-2 border-t border-gray-50 dark:border-gray-800 pt-4 text-xs text-gray-500 dark:text-gray-400">
+              <div class="flex items-center gap-2">
+                <i data-lucide="clock" class="w-4 h-4 text-primary"></i>
+                <span>Mon, Tue, Wed (09:00 AM - 12:00 PM)</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="award" class="w-4 h-4 text-primary"></i>
+                <span>Experience: <strong class="text-secondary dark:text-white">20 Years</strong></span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-primary"></i>
+                <span>Registration: <strong class="text-secondary dark:text-white">Free</strong></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-2 flex gap-3">
+          <button onclick="viewDoctorProfile('doc-5')" class="flex-1 text-center py-2 px-3 border border-primary text-primary text-sm font-semibold rounded-lg hover:bg-primary/5 transition">
+            View Profile
+          </button>
+          <button onclick="bookDoctorApt('doc-5')" class="flex-1 text-center py-2 px-3 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primaryHover transition shadow-sm">
+            Join Camp
+          </button>
+        </div>
+      </div>
+
+      <!-- Doctor 6: Dr. Franklin Cross -->
+      <div class="doctor-card bg-white dark:bg-cardWhite rounded-xl overflow-hidden border border-gray-100 dark:border-gray-800 premium-shadow premium-shadow-hover transition duration-300 flex flex-col justify-between"
+           data-name="Dr. Franklin Cross" data-dept="orthopedic-camp">
+        <div>
+          <div class="relative h-72 bg-gray-50 overflow-hidden">
+            <img src="https://www.cosmopolitanhospitals.in/uploads/doctors/1772769539_16f444cd18b640537a31.webp" alt="Dr. Franklin Cross" class="w-full h-full object-cover object-top transition duration-500 hover:scale-105">
+            <span class="absolute top-4 right-4 bg-primary text-white text-xs px-3 py-1 rounded-full font-semibold">
+              Orthopedic & Bone Health
+            </span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-secondary dark:text-white mb-1">Dr. Franklin Cross</h3>
+            <p class="doctor-qualification text-primary font-medium text-sm mb-3">MS (Ortho)</p>
+            <p class="doctor-bio text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">Orthopedic specialist running bone mineral density test camps and managing physical rehabilitation drives.</p>
+            
+            <div class="space-y-2 border-t border-gray-50 dark:border-gray-800 pt-4 text-xs text-gray-500 dark:text-gray-400">
+              <div class="flex items-center gap-2">
+                <i data-lucide="clock" class="w-4 h-4 text-primary"></i>
+                <span>Thu, Fri, Sat (02:00 PM - 06:00 PM)</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="award" class="w-4 h-4 text-primary"></i>
+                <span>Experience: <strong class="text-secondary dark:text-white">9 Years</strong></span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-primary"></i>
+                <span>Registration: <strong class="text-secondary dark:text-white">Free</strong></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-2 flex gap-3">
+          <button onclick="viewDoctorProfile('doc-6')" class="flex-1 text-center py-2 px-3 border border-primary text-primary text-sm font-semibold rounded-lg hover:bg-primary/5 transition">
+            View Profile
+          </button>
+          <button onclick="bookDoctorApt('doc-6')" class="flex-1 text-center py-2 px-3 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primaryHover transition shadow-sm">
+            Join Camp
+          </button>
+        </div>
+      </div>
+
+      <!-- Doctor 7: Dr. Gregory Peck -->
+      <div class="doctor-card bg-white dark:bg-cardWhite rounded-xl overflow-hidden border border-gray-100 dark:border-gray-800 premium-shadow premium-shadow-hover transition duration-300 flex flex-col justify-between"
+           data-name="Dr. Gregory Peck" data-dept="dental-checkup">
+        <div>
+          <div class="relative h-72 bg-gray-50 overflow-hidden">
+            <img src="https://media.istockphoto.com/id/1636023306/photo/portrait-of-young-hispanic-businessman-inside-office-boss-in-business-suit-smiling-and.jpg?s=612x612&w=0&k=20&c=3aC2P0heBBWlaVdFq6P711W3TMw7Lqgb5Wru6xwH8_w=" alt="Dr. Gregory Peck" class="w-full h-full object-cover object-top transition duration-500 hover:scale-105">
+            <span class="absolute top-4 right-4 bg-primary text-white text-xs px-3 py-1 rounded-full font-semibold">
+              Dental Health & Hygiene
+            </span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-secondary dark:text-white mb-1">Dr. Gregory Peck</h3>
+            <p class="doctor-qualification text-primary font-medium text-sm mb-3">DDS (Dental Surgery)</p>
+            <p class="doctor-bio text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">Lead Dental Consultant focused on community dental screenings, tooth decay prevention drives, and oral hygiene education.</p>
+            
+            <div class="space-y-2 border-t border-gray-50 dark:border-gray-800 pt-4 text-xs text-gray-500 dark:text-gray-400">
+              <div class="flex items-center gap-2">
+                <i data-lucide="clock" class="w-4 h-4 text-primary"></i>
+                <span>Mon - Fri (09:00 AM - 01:00 PM)</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="award" class="w-4 h-4 text-primary"></i>
+                <span>Experience: <strong class="text-secondary dark:text-white">15 Years</strong></span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-primary"></i>
+                <span>Registration: <strong class="text-secondary dark:text-white">Free</strong></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-2 flex gap-3">
+          <button onclick="viewDoctorProfile('doc-7')" class="flex-1 text-center py-2 px-3 border border-primary text-primary text-sm font-semibold rounded-lg hover:bg-primary/5 transition">
+            View Profile
+          </button>
+          <button onclick="bookDoctorApt('doc-7')" class="flex-1 text-center py-2 px-3 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primaryHover transition shadow-sm">
+            Join Camp
+          </button>
+        </div>
+      </div>
+
+      <!-- Doctor 8: Dr. Helena Geller -->
+      <div class="doctor-card bg-white dark:bg-cardWhite rounded-xl overflow-hidden border border-gray-100 dark:border-gray-800 premium-shadow premium-shadow-hover transition duration-300 flex flex-col justify-between"
+           data-name="Dr. Helena Geller" data-dept="womens-health">
+        <div>
+          <div class="relative h-72 bg-gray-50 overflow-hidden">
+            <img src="https://media.istockphoto.com/id/1373258655/photo/happy-nurse-at-hospital.jpg?s=612x612&w=0&k=20&c=mt8_LDMnWZHxAVm64SjmqBqbsTnrmDI3DlCq-jv3afA=" alt="Dr. Helena Geller" class="w-full h-full object-cover object-top transition duration-500 hover:scale-105">
+            <span class="absolute top-4 right-4 bg-primary text-white text-xs px-3 py-1 rounded-full font-semibold">
+              Women's Health & Wellness
+            </span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-secondary dark:text-white mb-1">Dr. Helena Geller</h3>
+            <p class="doctor-qualification text-primary font-medium text-sm mb-3">MD (Gynecology)</p>
+            <p class="doctor-bio text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">Maternal and gynecological consultant hosting free wellness consultations and breast cancer awareness drives.</p>
+            
+            <div class="space-y-2 border-t border-gray-50 dark:border-gray-800 pt-4 text-xs text-gray-500 dark:text-gray-400">
+              <div class="flex items-center gap-2">
+                <i data-lucide="clock" class="w-4 h-4 text-primary"></i>
+                <span>Tue, Thu, Sat (11:00 AM - 04:00 PM)</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="award" class="w-4 h-4 text-primary"></i>
+                <span>Experience: <strong class="text-secondary dark:text-white">10 Years</strong></span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-primary"></i>
+                <span>Registration: <strong class="text-secondary dark:text-white">Free</strong></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-2 flex gap-3">
+          <button onclick="viewDoctorProfile('doc-8')" class="flex-1 text-center py-2 px-3 border border-primary text-primary text-sm font-semibold rounded-lg hover:bg-primary/5 transition">
+            View Profile
+          </button>
+          <button onclick="bookDoctorApt('doc-8')" class="flex-1 text-center py-2 px-3 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primaryHover transition shadow-sm">
+            Join Camp
+          </button>
+        </div>
+      </div>
+
+      <!-- Doctor 9: Dr. Ian Malcolm -->
+      <div class="doctor-card bg-white dark:bg-cardWhite rounded-xl overflow-hidden border border-gray-100 dark:border-gray-800 premium-shadow premium-shadow-hover transition duration-300 flex flex-col justify-between"
+           data-name="Dr. Ian Malcolm" data-dept="ent-camp">
+        <div>
+          <div class="relative h-72 bg-gray-50 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=600" alt="Dr. Ian Malcolm" class="w-full h-full object-cover object-top transition duration-500 hover:scale-105">
+            <span class="absolute top-4 right-4 bg-primary text-white text-xs px-3 py-1 rounded-full font-semibold">
+              ENT Screening
+            </span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-secondary dark:text-white mb-1">Dr. Ian Malcolm</h3>
+            <p class="doctor-qualification text-primary font-medium text-sm mb-3">MD (Otolaryngology)</p>
+            <p class="doctor-bio text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">ENT Lead specialist checking hearing disorders, nose/throat health screens, and allergy counseling during camps.</p>
+            
+            <div class="space-y-2 border-t border-gray-50 dark:border-gray-800 pt-4 text-xs text-gray-500 dark:text-gray-400">
+              <div class="flex items-center gap-2">
+                <i data-lucide="clock" class="w-4 h-4 text-primary"></i>
+                <span>Mon - Sat (08:00 AM - 12:00 PM)</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="award" class="w-4 h-4 text-primary"></i>
+                <span>Experience: <strong class="text-secondary dark:text-white">18 Years</strong></span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-primary"></i>
+                <span>Registration: <strong class="text-secondary dark:text-white">Free</strong></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-2 flex gap-3">
+          <button onclick="viewDoctorProfile('doc-9')" class="flex-1 text-center py-2 px-3 border border-primary text-primary text-sm font-semibold rounded-lg hover:bg-primary/5 transition">
+            View Profile
+          </button>
+          <button onclick="bookDoctorApt('doc-9')" class="flex-1 text-center py-2 px-3 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primaryHover transition shadow-sm">
+            Join Camp
+          </button>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <!-- Footer -->
   <footer id="main-footer"
-    class="bg-[#1E293B] dark:bg-[#17222E] text-white pt-16 pb-8 border-t border-white/5 transition-colors duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+    class="bg-white dark:bg-[#17222E] text-darkSlate dark:text-gray-300 pt-16 pb-8 border-t border-gray-100 dark:border-gray-800/50 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-12">
       <div>
         <div class="flex items-center gap-3 mb-6">
           <div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white">
             <i data-lucide="droplet" class="w-5 h-5"></i>
           </div>
-          <span class="font-heading text-base font-extrabold tracking-tight">LifeStream</span>
+          <span class="font-heading text-lg font-extrabold tracking-tight leading-tight text-secondary dark:text-white">LifeStream</span>
         </div>
-        <p class="text-gray-400 text-xs leading-relaxed max-w-xs mb-6" data-translate="footerText">
+        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed max-w-xs mb-6" data-translate="footerText">
           Coordinating community-driven blood donation drives and free health screening camps to make healthcare accessible to all.
         </p>
         <div class="flex gap-3">
-          <a href="#" onclick="event.preventDefault();" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-primary hover:text-white flex items-center justify-center text-gray-400 transition" title="Facebook">
+          <a href="#" onclick="event.preventDefault();" class="w-8 h-8 rounded-lg bg-gray-100 dark:bg-white/5 hover:bg-primary hover:text-white flex items-center justify-center text-gray-500 dark:text-gray-400 transition" title="Facebook">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
           </a>
-          <a href="#" onclick="event.preventDefault();" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-primary hover:text-white flex items-center justify-center text-gray-400 transition" title="X (Twitter)">
+          <a href="#" onclick="event.preventDefault();" class="w-8 h-8 rounded-lg bg-gray-100 dark:bg-white/5 hover:bg-primary hover:text-white flex items-center justify-center text-gray-500 dark:text-gray-400 transition" title="X (Twitter)">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
           </a>
-          <a href="#" onclick="event.preventDefault();" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-primary hover:text-white flex items-center justify-center text-gray-400 transition" title="Instagram">
+          <a href="#" onclick="event.preventDefault();" class="w-8 h-8 rounded-lg bg-gray-100 dark:bg-white/5 hover:bg-primary hover:text-white flex items-center justify-center text-gray-500 dark:text-gray-400 transition" title="Instagram">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
           </a>
-          <a href="#" onclick="event.preventDefault();" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-primary hover:text-white flex items-center justify-center text-gray-400 transition" title="LinkedIn">
+          <a href="#" onclick="event.preventDefault();" class="w-8 h-8 rounded-lg bg-gray-100 dark:bg-white/5 hover:bg-primary hover:text-white flex items-center justify-center text-gray-500 dark:text-gray-400 transition" title="LinkedIn">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
           </a>
         </div>
       </div>
 
       <div>
-        <h4 class="font-extrabold text-sm mb-6 uppercase tracking-wider text-primary">Portal Navigation</h4>
-        <ul class="space-y-3.5 text-xs text-gray-400">
-          <li><a href="index.html" class="hover:text-white transition">Home 1</a></li>
-          <li><a href="home2.html" class="hover:text-white transition">Home 2</a></li>
-          <li><a href="departments.html" class="hover:text-white transition">Camps</a></li>
-          <li><a href="doctors.html" class="hover:text-white transition">Specialists</a></li>
-          <li><a href="about.html" class="hover:text-white transition">About Us</a></li>
+        <h4 class="font-extrabold text-base mb-6 uppercase tracking-wider text-primary">Portal Navigation</h4>
+        <ul class="space-y-3.5 text-sm text-gray-600 dark:text-gray-400">
+          <li><a href="index.html" class="hover:text-primary transition">Home 1</a></li>
+          <li><a href="home2.html" class="hover:text-primary transition">Home 2</a></li>
+          <li><a href="departments.html" class="hover:text-primary transition">Camps</a></li>
+          <li><a href="doctors.html" class="hover:text-primary transition">Specialists</a></li>
+          <li><a href="about.html" class="hover:text-primary transition">About Us</a></li>
         </ul>
       </div>
 
       <div>
-        <h4 class="font-extrabold text-sm mb-6 uppercase tracking-wider text-primary">Donor & Volunteer Access</h4>
-        <ul class="space-y-3.5 text-xs text-gray-400">
-          <li><a href="login.html" class="hover:text-white transition">Sign In Portal</a></li>
-          <li><a href="signup.html" class="hover:text-white transition">Register Account</a></li>
-          <li><a href="contact.html" class="hover:text-white transition">Camp Registration</a></li>
+        <h4 class="font-extrabold text-base mb-6 uppercase tracking-wider text-primary">Donor & Volunteer</h4>
+        <ul class="space-y-3.5 text-sm text-gray-600 dark:text-gray-400">
+          <li><a href="login.html" class="hover:text-primary transition">Sign In Portal</a></li>
+          <li><a href="signup.html" class="hover:text-primary transition">Register Account</a></li>
+          <li><a href="contact.html" class="hover:text-primary transition">Camp Registration</a></li>
         </ul>
       </div>
 
       <div>
-        <h4 class="font-extrabold text-sm mb-6 uppercase tracking-wider text-primary">Support Desk</h4>
-        <div class="space-y-4 text-xs text-gray-400">
+        <h4 class="font-extrabold text-base mb-6 uppercase tracking-wider text-primary">Support Desk</h4>
+        <div class="space-y-4 text-sm text-gray-600 dark:text-gray-400">
           <p class="flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4 text-primary shrink-0"></i> <span>+1 (555) 019-2830</span></p>
-          <p class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4 text-primary shrink-0"></i> <span>contact@lifestreamcamps.example.com</span></p>
-          <p class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-primary shrink-0"></i> <span>102 LifeStream Blvd, New York, NY</span></p>
+          <p class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4 text-primary shrink-0"></i> <span>contact@life.example.com</span></p>
+          <p class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-primary shrink-0"></i> <span>102 Blvd, New York, NY</span></p>
         </div>
       </div>
     </div>
 
     <div
-      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-white/5 pt-8 text-center flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-gray-500">
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-gray-100 dark:border-gray-800/50 pt-8 text-center flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-gray-500">
       <p>&copy; 2026 LifeStream. All rights reserved.</p>
       <div class="flex gap-6">
         <a href="#" onclick="event.preventDefault();" class="hover:underline">Privacy Policy</a>
