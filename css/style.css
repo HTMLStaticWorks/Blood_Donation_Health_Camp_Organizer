@@ -195,3 +195,36 @@ body.watermark-bg .text-gray-600 {
 .dark body.watermark-bg .dark\:text-gray-300 {
   color: #F9FAFB !important; /* Shunted to text-gray-50 */
 }
+
+/* Dark theme overrides to make grey text lighter and highly legible even if dark classes are missing */
+.dark body.watermark-bg .text-gray-500 {
+  color: #D1D5DB !important;
+}
+.dark body.watermark-bg .text-gray-400 {
+  color: #E5E7EB !important;
+}
+.dark body.watermark-bg .text-gray-600 {
+  color: #F3F4F6 !important;
+}
+
+/* Ensure hover text color is applied even with watermark-bg overrides */
+body.watermark-bg a.hover\:text-white:hover {
+  color: #ffffff !important;
+}
+.dark body.watermark-bg a.hover\:text-white:hover {
+  color: #ffffff !important;
+}
+
+/* Ensure hover background color is applied even with dark mode background overrides */
+body.watermark-bg a.hover\:bg-primary:hover {
+  background-color: var(--primary-teal) !important;
+}
+.dark body.watermark-bg a.hover\:bg-primary:hover {
+  background-color: var(--primary-teal) !important;
+}
+
+/* Make native browser datepicker elements legible in dark mode */
+.dark input[type="date"] {
+  color-scheme: dark;
+}
+
